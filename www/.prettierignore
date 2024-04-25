@@ -1,0 +1,15 @@
+**/.git
+*/.next
+*/.firebase
+
+**/.DS_Store
+**/package-lock.json
+
+**/*.log
+**/.env
+**/.env.*
+!**/.env.example
+
+**/node_modules
+**/dist
+**/build

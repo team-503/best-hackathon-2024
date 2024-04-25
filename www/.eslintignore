@@ -1,0 +1,5 @@
+**/__graphql__
+
+node_modules
+dist/
+build/

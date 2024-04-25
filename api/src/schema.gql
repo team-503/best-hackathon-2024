@@ -1,0 +1,81 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type IsSuccessType {
+  isSuccess: Boolean!
+  error: String
+}
+
+type AuthResponseType {
+  token: String!
+}
+
+type SocialsType {
+  facebook: String
+  instagram: String
+  twitter: String
+}
+
+type UserType {
+  id: String!
+  email: String!
+  fullName: String!
+  gender: UserGenderEnum!
+  age: Float!
+  bio: String!
+  imgUrl: String!
+  location: String!
+  interests: [String!]!
+  socials: SocialsType!
+}
+
+enum UserGenderEnum {
+  MALE
+  FEMALE
+  OTHER
+}
+
+type PageInfoType {
+  limit: Int!
+  nextPageCursor: Int
+}
+
+type UserConnection {
+  nodes: [UserType!]!
+  pageInfo: PageInfoType!
+}
+
+type Query {
+  userConnection(limit: Int = 10, nextPageCursor: Int): UserConnection!
+  profile: UserType!
+}
+
+type Mutation {
+  login(data: LoginInput!): AuthResponseType!
+  register(data: RegisterInput!): AuthResponseType!
+  likeUser(userId: String!): IsSuccessType!
+  dislikeUser(userId: String!): IsSuccessType!
+}
+
+input LoginInput {
+  email: String!
+}
+
+input RegisterInput {
+  email: String!
+  fullName: String!
+  gender: UserGenderEnum!
+  age: Float!
+  bio: String! = ""
+  imgUrl: String!
+  location: String!
+  interests: [String!]!
+  socials: SocialsInput!
+}
+
+input SocialsInput {
+  facebook: String
+  instagram: String
+  twitter: String
+}
