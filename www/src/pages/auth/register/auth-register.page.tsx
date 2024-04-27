@@ -1,0 +1,19 @@
+import { PageWrapper } from '@/components/page-wrapper'
+import { urlConfig } from '@/config/url.config'
+import { AuthPersonTypeCard } from '@/pages/auth/components/auth-person-type-card'
+import { memo } from 'react'
+
+type AuthRegisterPageProps = unknown
+export const AuthRegisterPage: React.FC<AuthRegisterPageProps> = memo(() => {
+    return (
+        <PageWrapper breadcrumbs={[urlConfig.pages.main, urlConfig.pages.register]} className="flex h-full w-full gap-5 p-5 pt-0">
+            <AuthPersonTypeCard to={urlConfig.pages.register.receive.url} className="h-full w-full bg-blue-800 text-white">
+                Потрібна допомога
+            </AuthPersonTypeCard>
+            <AuthPersonTypeCard to={urlConfig.pages.register.provide.url} className="h-full w-full bg-green-800 text-white">
+                Хочу допомоги
+            </AuthPersonTypeCard>
+        </PageWrapper>
+    )
+})
+AuthRegisterPage.displayName = 'AuthRegisterPage'

@@ -12,3 +12,5 @@ requirePragma: false
 singleAttributePerLine: false
 quoteProps: as-needed
 endOfLine: auto
+plugins:
+    - prettier-plugin-tailwindcss
