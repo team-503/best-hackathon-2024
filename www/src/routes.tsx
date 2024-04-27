@@ -24,15 +24,15 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
             element: <AuthPage />,
             children: [
                 {
-                    path: urlConfig.pages.login.relativeUrl,
+                    path: urlConfig.pages.login.url,
                     element: <AuthLoginPage />,
                 },
                 {
-                    path: urlConfig.pages.registerRecieve.relativeUrl,
+                    path: urlConfig.pages.registerRecieve.url,
                     element: <AuthRegisterReceivePage />,
                 },
                 {
-                    path: urlConfig.pages.registerProvide.relativeUrl,
+                    path: urlConfig.pages.registerProvide.url,
                     element: <AuthRegisterProvidePage />,
                 },
             ],

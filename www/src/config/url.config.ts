@@ -16,17 +16,14 @@ export const urlConfig = {
         login: {
             label: 'Логін',
             url: '/auth/login',
-            relativeUrl: '/login',
         },
         registerRecieve: {
             label: 'Реєстрація',
             url: '/auth/register/receive',
-            relativeUrl: '/register/receive',
         },
         registerProvide: {
             label: 'Реєстрація',
             url: '/auth/register/provide',
-            relativeUrl: '/register/provide',
         },
 
         // other
@@ -34,6 +31,6 @@ export const urlConfig = {
             label: 'Пост',
             url: '/post/:id',
             getDynamicUrl: (id: string) => `/post/${id}`,
-        }
+        },
     },
 } as const

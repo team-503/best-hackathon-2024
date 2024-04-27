@@ -14,7 +14,7 @@ const config: CodegenConfig = {
     overwrite: true,
     generates: {
         './src/__generated__/graphql.ts': {
-            plugins: ['typescript', 'typescript-operations', 'typescript-react-apollo']
+            plugins: ['typescript', 'typescript-operations', 'typescript-react-apollo'],
         },
     },
 }
