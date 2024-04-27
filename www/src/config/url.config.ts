@@ -7,23 +7,27 @@ export const urlConfig = {
             label: 'Головна',
             url: '/',
         },
+        app: {
+            label: 'Додаток',
+            url: '/app',
+        },
 
         // auth
-        auth: {
-            label: 'Авторизація',
-            url: '/auth',
-        },
         login: {
             label: 'Логін',
             url: '/auth/login',
         },
-        registerRecieve: {
+        register: {
             label: 'Реєстрація',
-            url: '/auth/register/receive',
-        },
-        registerProvide: {
-            label: 'Реєстрація',
-            url: '/auth/register/provide',
+            url: '/auth/register',
+            receive: {
+                label: 'Потбірна допомога',
+                url: '/auth/register/receive',
+            },
+            provide: {
+                label: 'Хочу допомогти',
+                url: '/auth/register/provide',
+            }
         },
 
         // other
