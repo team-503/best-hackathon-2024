@@ -18,11 +18,13 @@ import { join } from 'path'
             autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
             sortSchema: false,
             playground: false,
+            introspection: true, // TODO: disable introspection in actual production
             plugins: [
                 ENV.isProd()
                     ? ApolloServerPluginLandingPageProductionDefault({ footer: false })
                     : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
             ],
+            includeStacktraceInErrorResponses: !ENV.isProd(),
         }),
         AuthModule,
         GraphQLEndpointsModule,

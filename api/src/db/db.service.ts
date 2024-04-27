@@ -1,4 +1,5 @@
 import { FirebaseFactory } from '@/db/firebase.factory'
+import { PostType } from '@/graphql/post/dto/independent/post.type'
 import { UserType } from '@/graphql/user/dto/independent/user.type'
 import { ENV } from '@/utils/env'
 import { Injectable } from '@nestjs/common'
@@ -12,7 +13,7 @@ export class DbService {
     private firebaseFirestore: admin.firestore.Firestore
 
     public users: FirebaseFactory<UserType>
-    public events: FirebaseFactory<any>
+    public posts: FirebaseFactory<PostType>
 
     constructor() {
         this.adminSDK = {
@@ -36,6 +37,7 @@ export class DbService {
         this.firebaseFirestore = admin.firestore()
 
         this.users = new FirebaseFactory(this.firebaseFirestore, this.getCollectionName('users'))
+        this.posts = new FirebaseFactory(this.firebaseFirestore, this.getCollectionName('posts'))
     }
 
     private getCollectionName(collectionName: string): string {

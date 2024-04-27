@@ -36,12 +36,3 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         return user
     }
 }
-
-// @Get('signout')
-// async logout(@Res({ passthrough: true }) res: ResponseType) {
-//   // Some internal checks
-//   ...
-//   ...
-//   res.cookie('token', '', { expires: new Date() });
-//   ...
-// }

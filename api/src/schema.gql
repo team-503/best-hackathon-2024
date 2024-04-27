@@ -7,75 +7,97 @@ type IsSuccessType {
   error: String
 }
 
+type PageInfoType {
+  limit: Int!
+  prevPageCursor: Int
+  nextPageCursor: Int
+}
+
+type PostType {
+  title: String!
+  content: String!
+  tags: [String!]!
+  id: String!
+  authorId: String!
+  createdAt: String!
+}
+
+type PostConnection {
+  nodes: [PostType!]!
+  pageInfo: PageInfoType!
+}
+
+type ProviderType {
+  field: String!
+}
+
+type ReceiverType {
+  field: String!
+}
+
+type UserType {
+  email: String!
+  userType: UserTypeEnum!
+  fullName: String!
+  receiver: ReceiverType
+  provider: ProviderType
+  id: String!
+}
+
+enum UserTypeEnum {
+  RECEIVER
+  PROVIDER
+}
+
 type AuthResponseType {
   token: String!
 }
 
-type SocialsType {
-  facebook: String
-  instagram: String
-  twitter: String
+input ProviderInput {
+  field: String!
 }
 
-type UserType {
-  id: String!
-  email: String!
-  fullName: String!
-  gender: UserGenderEnum!
-  age: Float!
-  bio: String!
-  imgUrl: String!
-  location: String!
-  interests: [String!]!
-  socials: SocialsType!
-}
-
-enum UserGenderEnum {
-  MALE
-  FEMALE
-  OTHER
-}
-
-type PageInfoType {
-  limit: Int!
-  nextPageCursor: Int
-}
-
-type UserConnection {
-  nodes: [UserType!]!
-  pageInfo: PageInfoType!
+input ReceiverInput {
+  field: String!
 }
 
 type Query {
-  userConnection(limit: Int = 10, nextPageCursor: Int): UserConnection!
-  profile: UserType!
+  me: UserType!
+  postConnection(limit: Int = 10, prevPageCursor: Int, nextPageCursor: Int): PostConnection!
+  postById(id: String!): PostType!
 }
 
 type Mutation {
-  login(data: LoginInput!): AuthResponseType!
-  register(data: RegisterInput!): AuthResponseType!
-  likeUser(userId: String!): IsSuccessType!
-  dislikeUser(userId: String!): IsSuccessType!
+  login(user: LoginInput!): AuthResponseType!
+  register(user: RegisterInput!): AuthResponseType!
+  createPost(post: PostInput!): PostType!
+  updatePost(post: PostUpdateInput!): PostType!
+  deletePost(id: String!): IsSuccessType!
 }
 
 input LoginInput {
   email: String!
+  password: String!
 }
 
 input RegisterInput {
   email: String!
+  password: String!
+  userType: UserTypeEnum!
   fullName: String!
-  gender: UserGenderEnum!
-  age: Float!
-  bio: String! = ""
-  imgUrl: String!
-  location: String!
-  interests: [String!]!
-  socials: SocialsInput!
+  receiver: ReceiverInput
+  provider: ProviderInput
 }
 
-input SocialsInput {
-  facebook: String
-  instagram: String
-  twitter: String
+input PostInput {
+  title: String!
+  content: String!
+  tags: [String!]!
+}
+
+input PostUpdateInput {
+  title: String
+  content: String
+  tags: [String!]
+  id: String!
 }
