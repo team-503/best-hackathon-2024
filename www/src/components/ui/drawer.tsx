@@ -30,7 +30,7 @@ const DrawerContent = React.forwardRef<
         <DrawerOverlay />
         <DrawerPrimitive.Content
             ref={ref}
-            className={cn('fixed h-full z-50 flex flex-col rounded-t-[10px]', className)}
+            className={cn('fixed z-50 flex h-full flex-col rounded-t-[10px]', className)}
             {...props}
         >
             <div className="mx-auto w-[200px] rounded-full" />
