@@ -12,6 +12,11 @@ export const urlConfig = {
             url: '/app',
         },
 
+        provide: {
+            label: 'Хочу допомогти',
+            url: '/app/provide'
+        },
+
         // auth
         login: {
             label: 'Логін',
