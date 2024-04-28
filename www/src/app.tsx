@@ -10,7 +10,7 @@ export const App: React.FC<AppProps> = memo(() => {
     return (
         <ErrorBoundary FallbackComponent={ErrorPage}>
             <Routes />
-            <ThemeUpdater />
+            {/* <ThemeUpdater /> */}
             <Toaster />
             {/* <TailwindIndicator  /> */}
         </ErrorBoundary>

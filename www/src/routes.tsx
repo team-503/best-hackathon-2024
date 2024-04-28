@@ -1,6 +1,7 @@
 import { urlConfig } from '@/config/url.config'
 import { AuthLayout } from '@/layouts/auth.layout'
 import { MainLayout } from '@/layouts/main.layout'
+import ProvidePage from '@/pages/app/provide/provide.page'
 import { LoginPage } from '@/pages/auth/login-page/login.page'
 import { RegisterChoicePage } from '@/pages/auth/register-page/register-choice.page'
 import { RegisterProvidePage } from '@/pages/auth/register-page/register-provide.page'
@@ -22,7 +23,10 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
                     path: urlConfig.pages.app.url,
                     element: <AuthLayout />,
                     children: [
-                        // authenticated routes
+                        {
+                            path: urlConfig.pages.provide.url,
+                            element: <ProvidePage />,
+                        },
                     ],
                 },
                 // non-authenticated routes

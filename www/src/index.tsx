@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/client'
 import AuthProvider from 'react-auth-kit/AuthProvider'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import './font.css'
 import './styles.css'
 
 const element = document.getElementById('root') as HTMLElement
