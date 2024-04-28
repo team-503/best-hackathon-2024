@@ -10,15 +10,15 @@ export const AuthLayout: React.FC<AuthLayoutProps> = memo(() => {
     const isAuth = useIsAuthenticated()
     const user = useAuthUser<UserType>()
 
-    if (!isAuth) {
-        return <Navigate to={urlConfig.pages.login.url} />
-    }
-    if (!user) {
-        return <Navigate to={urlConfig.pages.login.url} />
-    }
-    if (user.userType === UserTypeEnum.Unknown) {
-        return <Navigate to={urlConfig.pages.register.choice.url} />
-    }
+    // if (!isAuth) {
+    //     return <Navigate to={urlConfig.pages.login.url} />
+    // }
+    // if (!user) {
+    //     return <Navigate to={urlConfig.pages.login.url} />
+    // }
+    // if (user.userType === UserTypeEnum.Unknown) {
+    //     return <Navigate to={urlConfig.pages.register.choice.url} />
+    // }
 
     return <Outlet />
 })

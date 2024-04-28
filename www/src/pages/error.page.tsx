@@ -7,7 +7,7 @@ export const ErrorPage: React.FC<ErrorPageProps> = memo(() => {
     return (
         <>
             <ThemeUpdater />
-            <main className="h-screen flex justify-center items-center divide-x-4 divide-white">
+            <main className="h-screen flex justify-center items-center divide-x-4 divide-foreground">
                 <H2 className="pr-5">503</H2>
                 <H2 className="pl-5">Service unavailable</H2>
             </main>
