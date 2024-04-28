@@ -8,6 +8,10 @@ export const urlConfig = {
             label: 'Головна',
             url: '/',
         },
+        error: {
+            label: 'Помилка',
+            url: '/error',
+        },
         app: {
             label: 'Додаток',
             url: '/app',
@@ -26,15 +30,15 @@ export const urlConfig = {
                 url: '/app/profile/me',
             },
             id: {
-                label: 'Профіль',
+                label: 'Профіль користувача',
                 url: '/app/profile/:id',
-                getDynamicUrl: (id: string) => `/profile/${id}`,
+                getDynamicUrl: (id: string) => `/app/profile/${id}`,
             },
         },
         post: {
             label: 'Пост',
             url: '/app/post/:id',
-            getDynamicUrl: (id: string) => `/post/${id}`,
+            getDynamicUrl: (id: string) => `/app/post/${id}`,
         },
         createPost: {
             label: 'Створення посту пост',

@@ -1,0 +1,16 @@
+query Profile($profileId: String!) {
+    profile(id: $profileId) {
+        email
+        userType
+        fullName
+        receiver {
+            location
+            phone
+        }
+        provider {
+            location
+            field
+        }
+        id
+    }
+}

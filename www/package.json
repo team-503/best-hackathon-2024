@@ -4,6 +4,7 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
+        "predev": "graphql-codegen --config graphql-codegen.ts",
         "dev": "vite",
         "prebuild": "rimraf dist/",
         "build": "tsc && vite build",
@@ -24,7 +25,9 @@
     "dependencies": {
         "@apollo/client": "3.9.10",
         "@formkit/auto-animate": "0.8.2",
+        "@headlessui/react": "^1.7.19",
         "@hookform/resolvers": "3.3.4",
+        "@radix-ui/react-alert-dialog": "^1.0.5",
         "@radix-ui/react-avatar": "1.0.4",
         "@radix-ui/react-context-menu": "2.1.5",
         "@radix-ui/react-dialog": "1.0.5",
