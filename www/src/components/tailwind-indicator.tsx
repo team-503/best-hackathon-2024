@@ -1,14 +1,7 @@
-import { NODE_ENV_DEV, NODE_ENV_PROD } from '@/utils/NODE_ENV'
 import { memo } from 'react'
 
-type TailwindIndicatorProps = {
-    visible?: boolean
-}
-export const TailwindIndicator: React.FC<TailwindIndicatorProps> = memo(({ visible = NODE_ENV_DEV && !NODE_ENV_PROD }) => {
-    if (!visible) {
-        return null
-    }
-
+type TailwindIndicatorProps = unknown
+export const TailwindIndicator: React.FC<TailwindIndicatorProps> = memo(() => {
     return (
         <div className="fixed bottom-1 left-1 z-[1000000] flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 p-3 font-sans text-xs text-slate-50">
             <div className="block sm:hidden">xs</div>

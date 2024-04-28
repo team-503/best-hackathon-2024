@@ -1,5 +1,4 @@
 import { Muted } from '@/components/typography/muted'
-import { ThemeSelector } from '@/modules/theme/components/theme-selector'
 import { cn } from '@/utils/cn'
 import { memo } from 'react'
 
@@ -7,7 +6,7 @@ type FooterProps = React.ComponentProps<'section'>
 export const Footer: React.FC<FooterProps> = memo(({ className, ...props }) => {
     return (
         <section className={cn('border-t py-6', className)} {...props}>
-            <div className="container flex justify-between items-center">
+            <div className="container flex items-center justify-between">
                 <Muted>
                     Build by{' '}
                     <a href="https://github.com/team-503" className="underline">
@@ -19,7 +18,6 @@ export const Footer: React.FC<FooterProps> = memo(({ className, ...props }) => {
                     </a>
                     .
                 </Muted>
-                <ThemeSelector variant="outline" />
             </div>
         </section>
     )
