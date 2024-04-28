@@ -28,13 +28,13 @@ export const urlConfig = {
             id: {
                 label: 'Профіль',
                 url: '/app/profile/:id',
-                getDynamicUrl: (id: string) => `/profile/${id}`,
+                getDynamicUrl: (id: string) => `/app/profile/${id}`,
             },
         },
         post: {
             label: 'Пост',
             url: '/app/post/:id',
-            getDynamicUrl: (id: string) => `/post/${id}`,
+            getDynamicUrl: (id: string) => `/app/post/${id}`,
         },
         createPost: {
             label: 'Створення посту пост',

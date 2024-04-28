@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import moment from 'moment'
 import { PostType, usePostConnectionLazyQuery } from '@/__generated__/graphql'
+import moment from 'moment'
+import { useEffect, useState } from 'react'
 import { PostCard } from './components/post-card'
 
 export const ReceivePage = () => {
@@ -13,11 +13,13 @@ export const ReceivePage = () => {
 
     useEffect(() => {
         gerMorePosts()
+        console.log(posts)
     }, [gerMorePosts])
 
     useEffect(() => {
         if (data) {
             setPosts(prev => [...prev, ...data.postConnection.nodes])
+            console.log(posts)
         }
     }, [data])
 

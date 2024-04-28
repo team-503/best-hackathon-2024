@@ -15,7 +15,7 @@ export const PostCard: React.FC<PostCardProps> = memo(({ date, title, disc, imag
             <h2 className="mt-1 text-3xl font-bold text-[#0F172A]">{title}</h2>
             <p className="mt-5 text-left text-lg font-medium text-[#5F5F5F]">{disc}</p>
             <Button variant="default" className="mt-4 h-16 w-full text-xl font-bold uppercase" disabled>
-                Звʼязатись
+                Детальніше
             </Button>
         </div>
     )

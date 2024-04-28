@@ -1,0 +1,6 @@
+query Profile($profileId: String!) {
+    profile(id: $profileId) {
+        fullName
+        id
+    }
+}
