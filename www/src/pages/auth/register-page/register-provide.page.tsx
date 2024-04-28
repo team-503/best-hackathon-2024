@@ -1,5 +1,6 @@
 import { UserTypeEnum } from '@/__generated__/graphql'
 import { PageWrapper } from '@/components/page-wrapper'
+import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
 import { urlConfig } from '@/config/url.config'
 import { AuthCard } from '@/pages/auth/components/dependent/auth-card'
@@ -37,8 +38,7 @@ export const RegisterProvidePage: React.FC<RegisterProvidePageProps> = memo(() =
                     userType: UserTypeEnum.Provider,
                     provider: values,
                 })
-            }
-            catch (error) {
+            } catch (error) {
                 toast('Помилка реєстрації, спробуйте пізніше')
             }
         },
@@ -50,22 +50,28 @@ export const RegisterProvidePage: React.FC<RegisterProvidePageProps> = memo(() =
             breadcrumbs={[urlConfig.pages.main, urlConfig.pages.register, urlConfig.pages.register.provide]}
             className="flex items-center justify-center"
         >
-            <AuthCard title="Реєстрація" description="Потрібна допомога">
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-5">
-                        <FormTextField
-                            control={form.control}
-                            name="field"
-                            title="Сфера володінь"
-                            description="Область, у якій ви маєте експертизу або досвід і готові надавати допомогу."
-                            placeholder="Право"
-                        />
-                        <FormLocationField control={form.control} name="location" />
-                        <FormSubmitButton type="submit" isLoading={updateProfileMutationData.loading}>
-                            Завершити реєстрацію
-                        </FormSubmitButton>
-                    </form>
-                </Form>
+            <AuthCard>
+                <CardHeader>
+                    <CardTitle>Реєстрація</CardTitle>
+                    <CardDescription>Хочу допомогти</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-5">
+                            <FormTextField
+                                control={form.control}
+                                name="field"
+                                title="Сфера володінь"
+                                description="Область, у якій ви маєте експертизу або досвід і готові надавати допомогу."
+                                placeholder="Право"
+                            />
+                            <FormLocationField control={form.control} name="location" />
+                            <FormSubmitButton type="submit" isLoading={updateProfileMutationData.loading}>
+                                Завершити реєстрацію
+                            </FormSubmitButton>
+                        </form>
+                    </Form>
+                </CardContent>
             </AuthCard>
         </PageWrapper>
     )

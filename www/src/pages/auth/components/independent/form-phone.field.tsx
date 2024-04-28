@@ -16,7 +16,7 @@ export const FormPhoneField = <
                 <FormItem>
                     <FormLabel>Номер телефону</FormLabel>
                     <FormControl>
-                        <Input {...field} type="tel" placeholder='+380123456789' />
+                        <Input {...field} type="tel" placeholder="+380123456789" />
                     </FormControl>
                     <FormMessage />
                 </FormItem>
