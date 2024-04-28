@@ -15,24 +15,16 @@ export class UserService {
         private readonly authService: AuthService,
     ) {}
 
-    /**
-     * TODO: Remove before production
-     * @description Query for testing purposes only
-     */
-    async testJwt(): Promise<AuthResponseType> {
-        const firstUser = await this.dbService.users.query(ref => ref.limit(1))
-        const user = firstUser?.[0]
+    async me(currentUser: UserType): Promise<UserType> {
+        return currentUser
+    }
+
+    async profile(id: string): Promise<UserType> {
+        const user = await this.dbService.users.get(id)
         if (!user) {
             throw new NotFoundException('User not found')
         }
-        const token = await this.authService.generateJwt(user.id)
-        return {
-            token,
-        }
-    }
-
-    async me(currentUser: UserType): Promise<UserType> {
-        return currentUser
+        return user
     }
 
     async login(userData: LoginInput): Promise<AuthResponseType> {
@@ -48,6 +40,7 @@ export class UserService {
         const token = await this.authService.generateJwt(user.id)
         return {
             token,
+            user,
         }
     }
 
@@ -65,6 +58,7 @@ export class UserService {
         const token = await this.authService.generateJwt(user.id)
         return {
             token,
+            user,
         }
     }
 }

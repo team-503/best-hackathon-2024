@@ -1,10 +1,11 @@
+import { UserType } from '@/graphql/user/dto/independent/user.type'
 import { Field, ObjectType } from '@nestjs/graphql'
-import { IsNotEmpty, IsString } from 'class-validator'
 
 @ObjectType()
 export class AuthResponseType {
     @Field(() => String)
-    @IsString()
-    @IsNotEmpty()
     token: string
+
+    @Field(() => UserType)
+    user: UserType
 }

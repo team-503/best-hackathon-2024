@@ -28,11 +28,13 @@ type PostConnection {
 }
 
 type ProviderType {
+  location: String!
   field: String!
 }
 
 type ReceiverType {
-  field: String!
+  location: String!
+  phone: String!
 }
 
 type UserType {
@@ -45,24 +47,29 @@ type UserType {
 }
 
 enum UserTypeEnum {
+  UNKNOWN
   RECEIVER
   PROVIDER
 }
 
 type AuthResponseType {
   token: String!
+  user: UserType!
 }
 
 input ProviderInput {
+  location: String!
   field: String!
 }
 
 input ReceiverInput {
-  field: String!
+  location: String!
+  phone: String!
 }
 
 type Query {
   me: UserType!
+  profile(id: String!): UserType!
   postConnection(limit: Int = 10, prevPageCursor: Int, nextPageCursor: Int): PostConnection!
   postById(id: String!): PostType!
 }

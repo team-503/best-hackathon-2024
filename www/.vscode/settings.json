@@ -1,3 +1,9 @@
 {
-    "typescript.preferences.autoImportFileExcludePatterns": ["@radix-ui/*", "class-variance-authority", "sonner", "vaul"]
+    "typescript.preferences.autoImportFileExcludePatterns": [
+        "@radix-ui/*",
+        "class-variance-authority",
+        "vaul",
+        "postcss",
+        "cmdk"
+    ]
 }

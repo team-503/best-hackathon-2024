@@ -20,6 +20,10 @@ export const urlConfig = {
         register: {
             label: 'Реєстрація',
             url: '/auth/register',
+            choice: {
+                label: 'Тип реєстрації',
+                url: '/auth/register/choice',
+            },
             receive: {
                 label: 'Потбірна допомога',
                 url: '/auth/register/receive',
