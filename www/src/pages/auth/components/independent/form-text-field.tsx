@@ -28,7 +28,7 @@ export const FormTextField = <
                     </FormControl>
                     <Show>
                         <Show.When isTrue={description != null}>
-                            <FormDescription className='text-wrap break-words'>{description}</FormDescription>
+                            <FormDescription className="text-wrap break-words">{description}</FormDescription>
                         </Show.When>
                     </Show>
                     <FormMessage />

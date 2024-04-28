@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react'
 import moment from 'moment'
 import { PostType, usePostConnectionLazyQuery } from '@/__generated__/graphql'
-import { PostCard } from '../app/components/Post-card'
+import { PostCard } from './components/post-card'
 
 export const ReceivePage = () => {
-    localStorage.setItem(
-        '_auth',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJWWVRNWmJKTm1Zc29RSllLdDE4dSIsImlhdCI6MTcxNDMyMDc3NiwiZXhwIjoxNzE2MTM1MTc2fQ.O1BvCy6PQEjw-03bHB7sxdBPJbl9eGReWqbhGLqj8gw',
-    )
     const [gerMorePosts, { data }] = usePostConnectionLazyQuery({
         variables: {
             limit: 100,
@@ -17,7 +13,7 @@ export const ReceivePage = () => {
 
     useEffect(() => {
         gerMorePosts()
-    }, [])
+    }, [gerMorePosts])
 
     useEffect(() => {
         if (data) {

@@ -1,8 +1,9 @@
-query PostConnection($limit: Int, $prevPageCursor: Int, $nextPageCursor: Int) {
+query Query($limit: Int, $prevPageCursor: Int, $nextPageCursor: Int) {
     postConnection(limit: $limit, prevPageCursor: $prevPageCursor, nextPageCursor: $nextPageCursor) {
         nodes {
             title
             content
+            imageUrl
             tags
             id
             authorId
