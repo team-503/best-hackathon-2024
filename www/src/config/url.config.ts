@@ -39,7 +39,7 @@ export const urlConfig = {
 
         // auth
         login: {
-            label: 'Логін',
+            label: 'Вхід',
             url: '/auth/login',
         },
         register: {

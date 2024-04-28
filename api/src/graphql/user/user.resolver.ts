@@ -3,7 +3,7 @@ import { GqlAuthGuard } from '@/auth/guards/gql-auth.guard'
 import { LoginInput } from '@/graphql/user/dto/dependent/login.input'
 import { RegisterInput } from '@/graphql/user/dto/dependent/register.input'
 import { AuthResponseType } from '@/graphql/user/dto/independent/auth-response.type'
-import { UserType } from '@/graphql/user/dto/independent/user.type'
+import { UserInput, UserPartialInput, UserType } from '@/graphql/user/dto/independent/user.type'
 import { UserService } from '@/graphql/user/user.service'
 import { UseGuards } from '@nestjs/common'
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
@@ -18,6 +18,7 @@ export class UserResolver {
         return this.userService.me(currentUser)
     }
 
+    @UseGuards(GqlAuthGuard)
     @Query(() => UserType)
     profile(@Args({ name: 'id', type: () => String }) id: string): Promise<UserType> {
         return this.userService.profile(id)
@@ -31,5 +32,14 @@ export class UserResolver {
     @Mutation(() => AuthResponseType)
     register(@Args({ name: 'user', type: () => RegisterInput }) userData: RegisterInput): Promise<AuthResponseType> {
         return this.userService.register(userData)
+    }
+
+    @UseGuards(GqlAuthGuard)
+    @Mutation(() => UserType)
+    async updateProfile(
+        @Args({ name: 'user', type: () => UserPartialInput }) userData: UserPartialInput,
+        @CurrentUser() currentUser: UserType,
+    ): Promise<UserType> {
+        return this.userService.updateProfile(userData, currentUser)
     }
 }

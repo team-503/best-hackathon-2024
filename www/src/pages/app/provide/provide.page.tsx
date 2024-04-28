@@ -1,4 +1,4 @@
-import PostCard from '../components/post-card'
+import { PostCard } from "@/pages/app/components/Post-card"
 
 function ProvidePage() {
     return (
