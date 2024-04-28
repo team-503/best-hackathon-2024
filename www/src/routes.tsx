@@ -7,12 +7,11 @@ import { RegisterChoicePage } from '@/pages/auth/register-page/register-choice.p
 import { RegisterProvidePage } from '@/pages/auth/register-page/register-provide.page'
 import { RegisterReceivePage } from '@/pages/auth/register-page/register-receive.page'
 import { RegisterPage } from '@/pages/auth/register-page/register.page'
-import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { MainPage } from '@/pages/main.page'
-import { Receive } from './pages/ReceivePage/Receive'
+import { ReceivePage } from './pages/ReceivePage/ReceivePage'
 
 export interface RoutesProps {}
 export const Routes: React.FC<RoutesProps> = memo(() => {
@@ -58,7 +57,7 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
                 },
                 {
                     path: urlConfig.pages.receive.url,
-                    element: <Receive />,
+                    element: <ReceivePage />,
                 },
                 {
                     path: '*',
