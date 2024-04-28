@@ -1,5 +1,6 @@
 import { UserTypeEnum } from '@/__generated__/graphql'
 import { PageWrapper } from '@/components/page-wrapper'
+import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
 import { urlConfig } from '@/config/url.config'
 import { AuthCard } from '@/pages/auth/components/dependent/auth-card'
@@ -52,16 +53,22 @@ export const RegisterReceivePage: React.FC<RegisterReceivePageProps> = memo(() =
             breadcrumbs={[urlConfig.pages.main, urlConfig.pages.register, urlConfig.pages.register.receive]}
             className="flex items-center justify-center"
         >
-            <AuthCard title="Реєстрація" description="Потрібна допомога">
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-5">
-                        <FormPhoneField control={form.control} name="phone" />
-                        <FormLocationField control={form.control} name="location" />
-                        <FormSubmitButton type="submit" isLoading={updateProfileMutationData.loading}>
-                            Завершити реєстрацію
-                        </FormSubmitButton>
-                    </form>
-                </Form>
+            <AuthCard>
+                <CardHeader>
+                    <CardTitle>Реєстрація</CardTitle>
+                    <CardDescription>Потрібна допомога</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-5">
+                            <FormPhoneField control={form.control} name="phone" />
+                            <FormLocationField control={form.control} name="location" />
+                            <FormSubmitButton type="submit" isLoading={updateProfileMutationData.loading}>
+                                Завершити реєстрацію
+                            </FormSubmitButton>
+                        </form>
+                    </Form>
+                </CardContent>
             </AuthCard>
         </PageWrapper>
     )

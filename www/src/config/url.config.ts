@@ -36,6 +36,10 @@ export const urlConfig = {
             url: '/app/post/:id',
             getDynamicUrl: (id: string) => `/post/${id}`,
         },
+        createPost: {
+            label: 'Створення посту пост',
+            url: '/app/create-post',
+        },
 
         // auth
         login: {
@@ -56,21 +60,7 @@ export const urlConfig = {
             provide: {
                 label: 'Хочу допомогти',
                 url: '/auth/register/provide',
-            }
-        },
-        receive: {
-            label: 'Отримувач',
-            url: '/receive',
-        },
-        // other
-        post: {
-            label: 'Пост',
-            url: '/post/:id',
-            getDynamicUrl: (id: string) => `/post/${id}`,
-        },
-        createPost: {
-            label: 'Створення посту пост',
-            url: '/new-recieval',
+            },
         },
     },
 } as const

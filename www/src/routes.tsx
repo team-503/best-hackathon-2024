@@ -1,19 +1,19 @@
 import { urlConfig } from '@/config/url.config'
 import { AuthLayout } from '@/layouts/auth.layout'
 import { MainLayout } from '@/layouts/main.layout'
-import ProvidePage from '@/pages/app/provide/provide.page'
+import ProvidePage from '@/pages/app/provide.page'
 import { LoginPage } from '@/pages/auth/login-page/login.page'
 import { RegisterChoicePage } from '@/pages/auth/register-page/register-choice.page'
 import { RegisterProvidePage } from '@/pages/auth/register-page/register-provide.page'
 import { RegisterReceivePage } from '@/pages/auth/register-page/register-receive.page'
 import { RegisterPage } from '@/pages/auth/register-page/register.page'
-import { CreatePostPage } from '@/pages/create-post-page/create-post.page'
+import { CreatePostPage } from '@/pages/app/create-post.page'
 import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
-import { MainPage } from '@/pages/main.page'
-import { ReceivePage } from './pages/ReceivePage/ReceivePage'
+import { ReceivePage } from './pages/app/receive-page'
+import { AppPage } from '@/pages/app/app.page'
 
 export interface RoutesProps {}
 export const Routes: React.FC<RoutesProps> = memo(() => {
@@ -27,8 +27,20 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
                     element: <AuthLayout />,
                     children: [
                         {
+                            path: urlConfig.pages.app.url,
+                            element: <AppPage />,
+                        },
+                        {
+                            path: urlConfig.pages.receive.url,
+                            element: <ReceivePage />,
+                        },
+                        {
                             path: urlConfig.pages.provide.url,
                             element: <ProvidePage />,
+                        },
+                        {
+                            path: urlConfig.pages.createPost.url,
+                            element: <CreatePostPage />,
                         },
                     ],
                 },
@@ -56,14 +68,6 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
                 {
                     path: urlConfig.pages.register.provide.url,
                     element: <RegisterProvidePage />,
-                },
-                {
-                    path: urlConfig.pages.createPost.url,
-                    element: <CreatePostPage />,
-                },
-                {
-                    path: urlConfig.pages.receive.url,
-                    element: <ReceivePage />,
                 },
                 {
                     path: '*',

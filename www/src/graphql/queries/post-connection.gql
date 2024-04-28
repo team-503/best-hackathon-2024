@@ -3,6 +3,7 @@ query PostConnection($limit: Int, $prevPageCursor: Int, $nextPageCursor: Int) {
         nodes {
             title
             content
+            imageUrl
             tags
             id
             authorId
