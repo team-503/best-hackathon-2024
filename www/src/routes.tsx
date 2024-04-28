@@ -9,6 +9,7 @@ import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { MainPage } from '@/pages/main.page'
+import ProvidePage from './pages/app/provide/provide.page'
 
 export interface RoutesProps {}
 export const Routes: React.FC<RoutesProps> = memo(() => {
@@ -21,7 +22,10 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
                     path: urlConfig.pages.app.url,
                     element: <AuthLayout />,
                     children: [
-                        // authenticated routes
+                        {
+                            path: urlConfig.pages.provide.url,
+                            element: <ProvidePage />,
+                        },
                     ],
                 },
                 // non-authenticated routes
