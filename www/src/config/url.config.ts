@@ -58,5 +58,9 @@ export const urlConfig = {
                 url: '/auth/register/provide',
             },
         },
+        createPost: {
+            label: 'Створення посту пост',
+            url: '/new-recieval',
+        },
     },
 } as const
