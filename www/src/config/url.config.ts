@@ -39,7 +39,7 @@ export const urlConfig = {
 
         // auth
         login: {
-            label: 'Логін',
+            label: 'Вхід',
             url: '/auth/login',
         },
         register: {
@@ -67,6 +67,10 @@ export const urlConfig = {
             label: 'Пост',
             url: '/post/:id',
             getDynamicUrl: (id: string) => `/post/${id}`,
+        },
+        createPost: {
+            label: 'Створення посту пост',
+            url: '/new-recieval',
         },
     },
 } as const

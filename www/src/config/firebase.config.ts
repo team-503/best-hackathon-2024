@@ -27,3 +27,7 @@ export const firebaseGoogleAuthProvider = new GoogleAuthProvider()
 //     provider: new ReCaptchaV3Provider(dotenv.get(ENV.FIRE_APPCHECK_KEY)),
 //     isTokenAutoRefreshEnabled: true,
 // })
+
+export const firebaseStorageDirectories = {
+    posts: 'posts',
+}

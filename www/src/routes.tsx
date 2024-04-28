@@ -7,6 +7,8 @@ import { RegisterChoicePage } from '@/pages/auth/register-page/register-choice.p
 import { RegisterProvidePage } from '@/pages/auth/register-page/register-provide.page'
 import { RegisterReceivePage } from '@/pages/auth/register-page/register-receive.page'
 import { RegisterPage } from '@/pages/auth/register-page/register.page'
+import { CreatePostPage } from '@/pages/create-post-page/create-post.page'
+import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
@@ -54,6 +56,10 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
                 {
                     path: urlConfig.pages.register.provide.url,
                     element: <RegisterProvidePage />,
+                },
+                {
+                    path: urlConfig.pages.createPost.url,
+                    element: <CreatePostPage />,
                 },
                 {
                     path: urlConfig.pages.receive.url,

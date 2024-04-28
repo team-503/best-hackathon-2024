@@ -1,7 +1,7 @@
 import { ProviderInput, ProviderType } from '@/graphql/user/dto/independent/provider.type'
 import { ReceiverInput, ReceiverType } from '@/graphql/user/dto/independent/receiver.type'
 import { UserTypeEnum } from '@/graphql/user/dto/enum/user-type.enum'
-import { Field, InputType, ObjectType, OmitType } from '@nestjs/graphql'
+import { Field, InputType, ObjectType, OmitType, PartialType } from '@nestjs/graphql'
 import { Exclude } from 'class-transformer'
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator'
 import { UUID, UUIDObjectType } from '@/common/uuid'
@@ -32,6 +32,9 @@ export class UserInput {
     @Field(() => ProviderInput, { nullable: true })
     provider?: ProviderInput
 }
+
+@InputType()
+export class UserPartialInput extends PartialType(UserInput, InputType) {}
 
 @ObjectType()
 export class UserType extends OmitType(UserInput, ['password'] as const, ObjectType) {
