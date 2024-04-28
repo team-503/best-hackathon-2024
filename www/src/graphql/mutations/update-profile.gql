@@ -1,0 +1,16 @@
+mutation UpdateProfile($user: UserPartialInput!) {
+    updateProfile(user: $user) {
+        email
+        userType
+        fullName
+        receiver {
+            location
+            phone
+        }
+        provider {
+            location
+            field
+        }
+        id
+    }
+}

@@ -3,10 +3,11 @@ import { DbService } from '@/db/db.service'
 import { LoginInput } from '@/graphql/user/dto/dependent/login.input'
 import { RegisterInput } from '@/graphql/user/dto/dependent/register.input'
 import { AuthResponseType } from '@/graphql/user/dto/independent/auth-response.type'
-import { UserType } from '@/graphql/user/dto/independent/user.type'
+import { UserPartialInput, UserType } from '@/graphql/user/dto/independent/user.type'
 import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common'
 import bcrypt from 'bcrypt'
 import config from 'config'
+import { merge } from 'lodash'
 
 @Injectable()
 export class UserService {
@@ -60,5 +61,11 @@ export class UserService {
             token,
             user,
         }
+    }
+
+    async updateProfile(userData: UserPartialInput, currentUser: UserType): Promise<UserType> {
+        const newUser = merge(currentUser, userData)
+        await this.dbService.users.update(newUser)
+        return newUser
     }
 }

@@ -5,13 +5,13 @@ import { memo } from 'react'
 import useIsAuthenticated from 'react-auth-kit/hooks/useIsAuthenticated'
 import { Navigate, Outlet } from 'react-router-dom'
 
-type AuthLayoutProps = unknown
-export const AuthLayout: React.FC<AuthLayoutProps> = memo(() => {
+type AlreadyAuthLayoutProps = unknown
+export const AlreadyAuthLayout: React.FC<AlreadyAuthLayoutProps> = memo(() => {
     const isAuth = useIsAuthenticated()
     const user = useUserStore(state => state.user)
 
-    if (!isAuth) {
-        return <Navigate to={urlConfig.pages.login.url} />
+    if (isAuth && user?.userType === UserTypeEnum.Unknown) {
+        return <Navigate to={urlConfig.pages.register.choice.url} />
     }
     if (!user) {
         return <Navigate to={urlConfig.pages.login.url} />
@@ -22,4 +22,4 @@ export const AuthLayout: React.FC<AuthLayoutProps> = memo(() => {
 
     return <Outlet />
 })
-AuthLayout.displayName = 'AuthLayout'
+AlreadyAuthLayout.displayName = 'AlreadyAuthLayout'

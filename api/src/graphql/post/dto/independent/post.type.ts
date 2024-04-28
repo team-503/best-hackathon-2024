@@ -1,6 +1,6 @@
 import { UUID, UUIDObjectType } from '@/common/uuid'
 import { Field, InputType, ObjectType } from '@nestjs/graphql'
-import { IsArray, IsNotEmpty, IsString } from 'class-validator'
+import { IsArray, IsNotEmpty, IsString, IsUrl } from 'class-validator'
 
 @InputType()
 @ObjectType({ isAbstract: true })
@@ -14,6 +14,12 @@ export class PostInput {
     @IsString()
     @IsNotEmpty()
     content: string
+
+    @Field(() => String)
+    @IsString()
+    @IsNotEmpty()
+    @IsUrl()
+    imageUrl: string
 
     @Field(() => [String])
     @IsArray()

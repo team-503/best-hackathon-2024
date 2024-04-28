@@ -4,7 +4,7 @@ import { memo, useEffect } from 'react'
 
 type ThemeUpdaterProps = unknown
 export const ThemeUpdater: React.FC<ThemeUpdaterProps> = memo(() => {
-    const { theme } = useThemeStore()
+    const theme = useThemeStore(state => state.theme)
 
     useEffect(() => {
         const root = window.document.documentElement

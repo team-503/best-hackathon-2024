@@ -11,7 +11,7 @@ export const RegisterChoicePage: React.FC<RegisterChoicePageProps> = memo(() => 
                 Потрібна допомога
             </AuthPersonTypeCard>
             <AuthPersonTypeCard to={urlConfig.pages.register.provide.url} className="h-full w-full bg-green-800 text-white">
-                Хочу допомоги
+                Хочу допомогти
             </AuthPersonTypeCard>
         </PageWrapper>
     )

@@ -16,6 +16,7 @@ type PageInfoType {
 type PostType {
   title: String!
   content: String!
+  imageUrl: String!
   tags: [String!]!
   id: String!
   authorId: String!
@@ -77,6 +78,7 @@ type Query {
 type Mutation {
   login(user: LoginInput!): AuthResponseType!
   register(user: RegisterInput!): AuthResponseType!
+  updateProfile(user: UserPartialInput!): UserType!
   createPost(post: PostInput!): PostType!
   updatePost(post: PostUpdateInput!): PostType!
   deletePost(id: String!): IsSuccessType!
@@ -96,15 +98,26 @@ input RegisterInput {
   provider: ProviderInput
 }
 
+input UserPartialInput {
+  email: String
+  password: String
+  userType: UserTypeEnum
+  fullName: String
+  receiver: ReceiverInput
+  provider: ProviderInput
+}
+
 input PostInput {
   title: String!
   content: String!
+  imageUrl: String!
   tags: [String!]!
 }
 
 input PostUpdateInput {
   title: String
   content: String
+  imageUrl: String
   tags: [String!]
   id: String!
 }
