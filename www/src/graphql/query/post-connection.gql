@@ -1,0 +1,17 @@
+query PostConnection($limit: Int, $prevPageCursor: Int, $nextPageCursor: Int) {
+    postConnection(limit: $limit, prevPageCursor: $prevPageCursor, nextPageCursor: $nextPageCursor) {
+        nodes {
+            title
+            content
+            tags
+            id
+            authorId
+            createdAt
+        }
+        pageInfo {
+            limit
+            prevPageCursor
+            nextPageCursor
+        }
+    }
+}

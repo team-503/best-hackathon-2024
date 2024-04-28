@@ -11,6 +11,8 @@ import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
+import { MainPage } from '@/pages/main.page'
+import { Receive } from './pages/ReceivePage/Receive'
 
 export interface RoutesProps {}
 export const Routes: React.FC<RoutesProps> = memo(() => {
@@ -53,6 +55,10 @@ export const Routes: React.FC<RoutesProps> = memo(() => {
                 {
                     path: urlConfig.pages.register.provide.url,
                     element: <RegisterProvidePage />,
+                },
+                {
+                    path: urlConfig.pages.receive.url,
+                    element: <Receive />,
                 },
                 {
                     path: '*',

@@ -38,7 +38,10 @@ export const urlConfig = {
                 url: '/auth/register/provide',
             }
         },
-
+        receive: {
+            label: 'Отримувач',
+            url: '/receive',
+        },
         // other
         post: {
             label: 'Пост',
