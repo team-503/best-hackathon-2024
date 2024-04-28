@@ -1,24 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Children as IChildren } from '@/types/children.type'
 import { Children, memo } from 'react'
 
 type ShowProps = {
-    children?: React.ReactNode
+    children?: IChildren
 }
 type ShowWhenProps = {
     isTrue: boolean
-    children?: React.ReactNode
+    children?: IChildren
 }
 type ShowOtherwiseProps = {
-    render?: React.ReactNode
-    children?: React.ReactNode
+    render?: IChildren
+    children?: IChildren
 }
 type ShowComponent = React.FC<ShowProps> & {
     When: React.FC<ShowWhenProps>
     Else: React.FC<ShowOtherwiseProps>
 }
 export const Show: ShowComponent = ({ children }) => {
-    let when: React.ReactNode = null
-    let otherwise: React.ReactNode = null
+    let when: IChildren = null
+    let otherwise: IChildren = null
 
     Children.forEach(children, children => {
         if ((children as any)?.props?.isTrue === undefined) {

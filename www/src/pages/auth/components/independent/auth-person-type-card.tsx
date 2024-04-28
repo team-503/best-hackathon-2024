@@ -7,11 +7,11 @@ type AuthPersonTypeCardProps = React.ComponentProps<typeof Link>
 export const AuthPersonTypeCard: React.FC<AuthPersonTypeCardProps> = memo(({ className, children, ...props }) => {
     return (
         <Link
-            {...props}
             className={cn(
                 'flex items-center justify-center text-balance rounded-3xl p-5 text-center transition-all duration-300 hover:scale-[1.005]',
                 className,
             )}
+            {...props}
         >
             <H1>{children}</H1>
         </Link>

@@ -18,6 +18,11 @@ export class UserResolver {
         return this.userService.me(currentUser)
     }
 
+    @Query(() => UserType)
+    profile(@Args({ name: 'id', type: () => String }) id: string): Promise<UserType> {
+        return this.userService.profile(id)
+    }
+
     @Mutation(() => AuthResponseType)
     login(@Args({ name: 'user', type: () => LoginInput }) userData: LoginInput): Promise<AuthResponseType> {
         return this.userService.login(userData)
