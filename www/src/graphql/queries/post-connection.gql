@@ -1,4 +1,4 @@
-query Query($limit: Int, $prevPageCursor: Int, $nextPageCursor: Int) {
+query PostConnection($limit: Int, $prevPageCursor: Int, $nextPageCursor: Int) {
     postConnection(limit: $limit, prevPageCursor: $prevPageCursor, nextPageCursor: $nextPageCursor) {
         nodes {
             title
