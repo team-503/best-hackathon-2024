@@ -1,5 +1,4 @@
-import PostCard from '../components/Post-card'
-import { useEffect, useState } from 'react'
+import PostCard from '../components/post-card'
 
 function ProvidePage() {
     return (

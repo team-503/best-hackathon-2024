@@ -22,7 +22,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = memo(({ children, ...
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" {...props}>
+                <Button size="icon" {...props}>
                     <CurrentThemeIcon />
                 </Button>
             </DropdownMenuTrigger>

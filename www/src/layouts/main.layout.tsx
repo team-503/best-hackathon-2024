@@ -1,7 +1,7 @@
 import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
 import { memo } from 'react'
 import { Outlet } from 'react-router-dom'
-import Header from '@/components/header'
 
 type MainLayoutProps = unknown
 export const MainLayout: React.FC<MainLayoutProps> = memo(() => {

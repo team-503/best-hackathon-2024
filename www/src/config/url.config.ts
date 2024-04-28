@@ -2,6 +2,7 @@ export const urlConfig = {
     api: {
         graphqlEndpoint: import.meta.env.VITE_GRAPHQL_ENDPOINT as string,
     },
+
     pages: {
         main: {
             label: 'Головна',
@@ -11,10 +12,29 @@ export const urlConfig = {
             label: 'Додаток',
             url: '/app',
         },
-
         provide: {
             label: 'Хочу допомогти',
-            url: '/app/provide'
+            url: '/app/provide',
+        },
+        receive: {
+            label: 'Потрібна допомога',
+            url: '/app/receive',
+        },
+        profile: {
+            me: {
+                label: 'Мій профіль',
+                url: '/app/profile/me',
+            },
+            id: {
+                label: 'Профіль',
+                url: '/app/profile/:id',
+                getDynamicUrl: (id: string) => `/profile/${id}`,
+            },
+        },
+        post: {
+            label: 'Пост',
+            url: '/app/post/:id',
+            getDynamicUrl: (id: string) => `/post/${id}`,
         },
 
         // auth
