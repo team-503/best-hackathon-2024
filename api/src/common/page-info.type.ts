@@ -5,6 +5,12 @@ export class PageInfoType {
     @Field(() => Int)
     limit: number
 
+    @Field(() => Boolean)
+    hasNextPage: boolean
+
+    @Field(() => Boolean)
+    hasPrevPage: boolean
+
     @Field(() => Int, { nullable: true })
     prevPageCursor?: number
 

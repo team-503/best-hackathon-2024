@@ -33,6 +33,8 @@ export class PostService {
                 limit: args.limit,
                 prevPageCursor: offset,
                 nextPageCursor: offset + args.limit,
+                hasNextPage: matchingPosts.length === args.limit,
+                hasPrevPage: offset > 0,
             },
         }
     }
