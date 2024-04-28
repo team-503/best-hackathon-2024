@@ -1,4 +1,3 @@
-import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/sonner'
 import { ThemeUpdater } from '@/modules/theme/components/theme-updater'
 import { ErrorPage } from '@/pages/error.page'
@@ -13,7 +12,7 @@ export const App: React.FC<AppProps> = memo(() => {
             <Routes />
             <ThemeUpdater />
             <Toaster />
-            <TailwindIndicator />
+            {/* <TailwindIndicator /> */}
         </ErrorBoundary>
     )
 })

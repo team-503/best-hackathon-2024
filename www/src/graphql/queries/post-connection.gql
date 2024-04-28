@@ -11,6 +11,8 @@ query PostConnection($limit: Int, $prevPageCursor: Int, $nextPageCursor: Int) {
         }
         pageInfo {
             limit
+            hasNextPage
+            hasPrevPage
             prevPageCursor
             nextPageCursor
         }

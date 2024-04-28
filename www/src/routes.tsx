@@ -3,7 +3,6 @@ import { AuthLayout } from '@/layouts/auth.layout'
 import { MainLayout } from '@/layouts/main.layout'
 import { AppPage } from '@/pages/app/app.page'
 import { CreatePostPage } from '@/pages/app/create-post.page'
-import ProvidePage from '@/pages/app/provide.page'
 import { LoginPage } from '@/pages/auth/login-page/login.page'
 import { RegisterChoicePage } from '@/pages/auth/register-page/register-choice.page'
 import { RegisterProvidePage } from '@/pages/auth/register-page/register-provide.page'
@@ -17,6 +16,7 @@ import { ReceivePage } from './pages/app/receive-page'
 import { ErrorPage } from '@/pages/error.page'
 import { ProfileMePage } from '@/pages/app/profile-me'
 import { ProfileIdPage } from '@/pages/app/profile-id.page'
+import { ProvidePage } from '@/pages/app/provide.page'
 
 export interface RoutesProps {}
 export const Routes: React.FC<RoutesProps> = memo(() => {

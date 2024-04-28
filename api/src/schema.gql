@@ -9,6 +9,8 @@ type IsSuccessType {
 
 type PageInfoType {
   limit: Int!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
   prevPageCursor: Int
   nextPageCursor: Int
 }
