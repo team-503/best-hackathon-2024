@@ -1,0 +1,19 @@
+mutation Login($user: LoginInput!) {
+    login(user: $user) {
+        token
+        user {
+            email
+            userType
+            fullName
+            receiver {
+                location
+                phone
+            }
+            provider {
+                location
+                field
+            }
+            id
+        }
+    }
+}
