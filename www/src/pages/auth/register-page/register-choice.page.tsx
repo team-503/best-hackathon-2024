@@ -1,6 +1,6 @@
 import { PageWrapper } from '@/components/page-wrapper'
 import { urlConfig } from '@/config/url.config'
-import { AuthPersonTypeCard } from '@/pages/auth/components/independent/auth-person-type-card'
+import { AuthPersonTypeCard } from '@/pages/auth/components/auth-person-type-card'
 import { memo } from 'react'
 
 type RegisterChoicePageProps = unknown
