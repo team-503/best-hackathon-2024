@@ -13,7 +13,7 @@ import { uploadImageToStorage } from '@/utils/firebase-utils'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { CirclePlus, X } from 'lucide-react'
 import { FC, memo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
 type CreatePostPageProps = unknown
@@ -140,8 +140,12 @@ export const CreatePostPage: FC<CreatePostPageProps> = memo(() => {
                         </div>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <Button variant="outline">Назад</Button>
-                        <LoadingButton onClick={createPost} isLoading={loading}>Створити</LoadingButton>
+                        <Button asChild variant="outline">
+                            <Link to={urlConfig.pages.app.url}>Назад</Link>
+                        </Button>
+                        <LoadingButton onClick={createPost} isLoading={loading}>
+                            Створити
+                        </LoadingButton>
                     </CardFooter>
                 </Card>
             </div>

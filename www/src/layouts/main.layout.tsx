@@ -9,6 +9,7 @@ export const MainLayout: React.FC<MainLayoutProps> = memo(() => {
         <section className="flex h-screen flex-col">
             <Header />
             <Outlet />
+            <div className="py-3" />
             <Footer className="mt-auto" />
         </section>
     )

@@ -61,7 +61,7 @@ export const ReceivePage: React.FC<ReceivePageProps> = memo(() => {
             <div className="container flex flex-col gap-5">
                 {data?.pages.map(page => page?.nodes.map(post => <PostCardLink key={post.id} post={post} />))}
 
-                <div ref={triggerRef} className="py-5" />
+                <div ref={triggerRef} />
             </div>
         </PageWrapper>
     )
