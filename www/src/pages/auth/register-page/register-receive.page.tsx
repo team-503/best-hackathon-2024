@@ -3,6 +3,7 @@ import { PageWrapper } from '@/components/page-wrapper'
 import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
 import { urlConfig } from '@/config/url.config'
+import { useUserStore } from '@/modules/user/stores/user.store'
 import { AuthCard } from '@/pages/auth/components/auth-card'
 import { FormLocationField } from '@/pages/auth/components/form-location-field'
 import { FormPhoneField } from '@/pages/auth/components/form-phone.field'
@@ -11,6 +12,7 @@ import { useFinishRegistration } from '@/pages/auth/hooks/user-finish-registrati
 import { zodResolver } from '@hookform/resolvers/zod'
 import { memo, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
+import { Navigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import validator from 'validator'
 import { z } from 'zod'
@@ -25,6 +27,7 @@ type FormSchemaType = z.infer<typeof formSchema>
 
 type RegisterReceivePageProps = unknown
 export const RegisterReceivePage: React.FC<RegisterReceivePageProps> = memo(() => {
+    const user = useUserStore(state => state.user)
     const { finishRegistration, updateProfileMutationData } = useFinishRegistration()
     const form = useForm<FormSchemaType>({
         resolver: zodResolver(formSchema),
@@ -47,6 +50,10 @@ export const RegisterReceivePage: React.FC<RegisterReceivePageProps> = memo(() =
         },
         [finishRegistration],
     )
+
+    if (user?.userType !== UserTypeEnum.Provider) {
+        return <Navigate to={urlConfig.pages.app.url} />
+    }
 
     return (
         <PageWrapper

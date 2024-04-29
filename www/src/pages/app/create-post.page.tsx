@@ -1,4 +1,5 @@
 import { useCreatePostMutation } from '@/__generated__/graphql'
+import { LoadingButton } from '@/components/loading-button'
 import { PageWrapper } from '@/components/page-wrapper'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -12,6 +13,7 @@ import { uploadImageToStorage } from '@/utils/firebase-utils'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { CirclePlus, X } from 'lucide-react'
 import { FC, memo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 
 type CreatePostPageProps = unknown
@@ -22,23 +24,37 @@ export const CreatePostPage: FC<CreatePostPageProps> = memo(() => {
     const [tagAnimation] = useAutoAnimate<HTMLDivElement>()
     const [file, setFile] = useState<File | null>(null)
     const [imageUrl, setImageUrl] = useState<string | null>(null)
-    const [createPostMutation] = useCreatePostMutation()
+    const [createPostMutation, { loading }] = useCreatePostMutation()
+    const navigate = useNavigate()
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files.length > 0) {
-            const selectedFile = e.target.files[0]
-            const url = URL.createObjectURL(selectedFile)
-            setImageUrl(url)
-            setFile(selectedFile)
+        if (!(e.target.files && e.target.files.length > 0)) {
+            return
         }
+        const selectedFile = e.target.files[0]
+        const url = URL.createObjectURL(selectedFile)
+        setImageUrl(url)
+        setFile(selectedFile)
     }
 
     const createPost = async () => {
         if (tags && description && tags.length > 0 && file) {
             const imageUrl = await uploadImageToStorage(file, file.name)
-            createPostMutation({ variables: { post: { title: title, content: description, tags: tags, imageUrl: imageUrl } } })
-        } else {
-            toast.error('Заповність усі поля')
+            createPostMutation({
+                variables: {
+                    post: {
+                        title,
+                        tags,
+                        imageUrl,
+                        content: description,
+                    },
+                },
+            })
+            toast.success('Пост успішно створено')
+            navigate(urlConfig.pages.app.url)
+            return
         }
+        toast.error('Заповність усі поля')
     }
     return (
         <PageWrapper
@@ -125,7 +141,7 @@ export const CreatePostPage: FC<CreatePostPageProps> = memo(() => {
                     </CardContent>
                     <CardFooter className="flex justify-between">
                         <Button variant="outline">Назад</Button>
-                        <Button onClick={createPost}>Створити</Button>
+                        <LoadingButton onClick={createPost} isLoading={loading}>Створити</LoadingButton>
                     </CardFooter>
                 </Card>
             </div>

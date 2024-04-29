@@ -1,12 +1,15 @@
-import { usePostConnectionLazyQuery } from '@/__generated__/graphql'
+import { UserTypeEnum, usePostConnectionLazyQuery } from '@/__generated__/graphql'
 import { PageWrapper } from '@/components/page-wrapper'
 import { urlConfig } from '@/config/url.config'
+import { useUserStore } from '@/modules/user/stores/user.store'
 import { PostCardLink } from '@/pages/app/components/post-card-link'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { memo, useEffect, useRef } from 'react'
+import { Navigate } from 'react-router-dom'
 
 type ProvidePageProps = unknown
 export const ProvidePage: React.FC<ProvidePageProps> = memo(() => {
+    const user = useUserStore(state => state.user)
     const [postConnectionQuery] = usePostConnectionLazyQuery({
         variables: {
             limit: 10,
@@ -49,8 +52,12 @@ export const ProvidePage: React.FC<ProvidePageProps> = memo(() => {
         }
     }, [fetchNextPage, isFetchingNextPage])
 
+    if (user?.userType !== UserTypeEnum.Provider) {
+        return <Navigate to={urlConfig.pages.app.url} />
+    }
+
     return (
-        <PageWrapper breadcrumbs={[urlConfig.pages.main, urlConfig.pages.app, urlConfig.pages.receive]}>
+        <PageWrapper breadcrumbs={[urlConfig.pages.main, urlConfig.pages.app, urlConfig.pages.provide]}>
             <div className="container flex flex-col gap-5">
                 {data?.pages.map(page => page?.nodes.map(post => <PostCardLink key={post.id} post={post} />))}
 
