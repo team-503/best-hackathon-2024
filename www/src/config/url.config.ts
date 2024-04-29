@@ -41,7 +41,7 @@ export const urlConfig = {
             getDynamicUrl: (id: string) => `/app/post/${id}`,
         },
         createPost: {
-            label: 'Створення посту пост',
+            label: 'Створення посту',
             url: '/app/create-post',
         },
 
