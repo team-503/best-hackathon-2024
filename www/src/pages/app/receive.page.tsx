@@ -5,8 +5,8 @@ import { PostCardLink } from '@/pages/app/components/post-card-link'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { memo, useEffect, useRef } from 'react'
 
-type ProvidePageProps = unknown
-export const ProvidePage: React.FC<ProvidePageProps> = memo(() => {
+type ReceivePageProps = unknown
+export const ReceivePage: React.FC<ReceivePageProps> = memo(() => {
     const [postConnectionQuery] = usePostConnectionLazyQuery({
         variables: {
             limit: 10,
@@ -59,4 +59,4 @@ export const ProvidePage: React.FC<ProvidePageProps> = memo(() => {
         </PageWrapper>
     )
 })
-ProvidePage.displayName = 'ProvidePage'
+ReceivePage.displayName = 'ReceivePage'
