@@ -1,0 +1,84 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type IsSuccessType {
+  isSuccess: Boolean!
+  error: String
+}
+
+type PageInfoType {
+  limit: Int!
+  nextPageCursor: Int
+}
+
+type AlbumType {
+  name: String!
+  id: Int!
+}
+
+type AlbumConnectionType {
+  nodes: [AlbumType!]!
+  pageInfo: PageInfoType!
+}
+
+type ImageType {
+  fileName: String!
+  location: String
+  id: Int!
+  createdAt: String!
+}
+
+type ImageConnectionType {
+  nodes: [ImageType!]!
+  pageInfo: PageInfoType!
+}
+
+type UserType {
+  email: String!
+  id: Int!
+}
+
+type AuthResponseType {
+  token: String!
+  user: UserType!
+}
+
+type Query {
+  me: UserType!
+  imageConnection(limit: Int! = 10, nextPageCursor: Int, albumId: Int, fileName: String, location: String): ImageConnectionType!
+  triggerImageUploadFromBackend(auth: String!): IsSuccessType!
+  albumConnection(limit: Int! = 10, nextPageCursor: Int): AlbumConnectionType!
+  getAlbumById(id: Int!): AlbumType
+}
+
+type Mutation {
+  login(user: LoginInput!): AuthResponseType!
+  register(user: RegisterInput!): AuthResponseType!
+  uploadImage(image: ImageInput!): ImageType!
+  addImageToAlbum(imageId: Int!, albumId: Int!): IsSuccessType!
+  removeImageFromAlbum(imageId: Int!, albumId: Int!): IsSuccessType!
+  deleteImage(imageId: Int!): IsSuccessType!
+  createAlbum(album: AlbumInput!): AlbumType!
+  removeAlbum(id: Int!): IsSuccessType!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+}
+
+input ImageInput {
+  blob: String!
+  fileName: String!
+  location: String
+}
+
+input AlbumInput {
+  name: String!
+}
