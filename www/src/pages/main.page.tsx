@@ -1,3 +1,4 @@
+import { EventCard } from '@/components/eventCard/EventCard'
 import { PageWrapper } from '@/components/page-wrapper'
 import { H1 } from '@/components/typography/h1'
 import { Button } from '@/components/ui/button'
