@@ -1,6 +1,7 @@
 export class UrlConfig {
     private static authPrefix = '/auth'
     private static appPrefix = '/app'
+    private static createEventPrefix = '/create-event'
 
     public static home = {
         label: 'Home',
@@ -32,7 +33,10 @@ export class UrlConfig {
         label: 'Register',
         url: `${UrlConfig.authPrefix}/register`,
     }
-
+    public static createEvent = {
+        label: 'Create event',
+        url: UrlConfig.createEventPrefix,
+    }
     public static app = {
         label: 'App',
         url: UrlConfig.appPrefix,

@@ -16,7 +16,7 @@ export const TransitionWrapper: React.FC<TransitionWrapperProps> = memo(({ child
                     duration: 0.5,
                     ease: [0.22, 1, 0.36, 1],
                 }}
-                className="fixed left-0 top-0 z-[1000] h-screen w-full origin-bottom bg-violet-500"
+                className="fixed left-0 top-0 z-[1000] h-screen w-full origin-bottom bg-green-900"
             />
             {/* slide-out */}
             <motion.div
@@ -27,7 +27,7 @@ export const TransitionWrapper: React.FC<TransitionWrapperProps> = memo(({ child
                     duration: 0.5,
                     ease: [0.22, 1, 0.36, 1],
                 }}
-                className="fixed left-0 top-0 z-[1000] h-screen w-full origin-top bg-violet-500"
+                className="fixed left-0 top-0 z-[1000] h-screen w-full origin-top bg-green-900"
             />
         </>
     )

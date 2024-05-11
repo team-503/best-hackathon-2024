@@ -9,7 +9,7 @@ type MainPageProps = unknown
 export const MainPage: React.FC<MainPageProps> = memo(() => {
     return (
         <PageWrapper className="relative my-auto flex flex-col items-center justify-center gap-10">
-            <div className="absolute h-1/2 w-1/2 rounded-full bg-violet-500/60 blur-[100px]" />
+            <div className="absolute h-1/2 w-1/2 rounded-full bg-green-500/60 blur-[100px]" />
             <div className="z-50 flex flex-col items-center justify-center gap-2">
                 <H1>503 App</H1>
             </div>
