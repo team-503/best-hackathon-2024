@@ -33,7 +33,7 @@ export const LoginPage: React.FC<LoginPageProps> = memo(() => {
     const onSubmit = useCallback(
         async (values: FormSchemaType) => {
             try {
-                login(UrlConfig.main.url, {
+                login(UrlConfig.app.url, {
                     email: values.email,
                     password: values.password,
                 })
@@ -45,7 +45,7 @@ export const LoginPage: React.FC<LoginPageProps> = memo(() => {
     )
 
     return (
-        <PageWrapper breadcrumbs={[UrlConfig.home, UrlConfig.login]} className="flex items-center justify-center">
+        <PageWrapper breadcrumbs={[UrlConfig.main, UrlConfig.login]} className="my-auto flex items-center justify-center">
             <AuthCard>
                 <CardHeader>
                     <CardTitle>Логін</CardTitle>

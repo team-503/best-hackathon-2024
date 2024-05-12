@@ -12,8 +12,7 @@ type PageWrapperProps = React.ComponentProps<'div'> & {
 }
 export const PageWrapper: React.FC<PageWrapperProps> = memo(({ breadcrumbs, container = true, className, ...props }) => {
     return (
-        // <TransitionWrapper>
-        <main className="flex flex-1 flex-col px-8">
+        <main className="flex h-full w-full flex-1 flex-col px-8">
             <Show>
                 <Show.When isTrue={breadcrumbs != null}>
                     <Breadcrumb className={cn('py-5', container && 'container')}>
@@ -34,9 +33,8 @@ export const PageWrapper: React.FC<PageWrapperProps> = memo(({ breadcrumbs, cont
                     </Breadcrumb>
                 </Show.When>
             </Show>
-            <div className={cn('h-full', className)} {...props} />
+            <div className={cn('h-full w-full', className)} {...props} />
         </main>
-        // </TransitionWrapper>
     )
 })
 PageWrapper.displayName = 'PageWrapper'
