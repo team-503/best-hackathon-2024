@@ -31,11 +31,7 @@ export const Routes: React.FC<RoutesProps> = memo(({ location }) => {
                     {
                         path: UrlConfig.auth.url,
                         element: <AlreadyAuthLayout />,
-                        children: [
-                            { path: UrlConfig.login.url, element: <LoginPage /> },
-                            // { path: UrlConfig.main.url, element: <HomePage /> },
-                            // { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
-                        ],
+                        children: [{ path: UrlConfig.login.url, element: <LoginPage /> }],
                     },
                     { path: UrlConfig.home.url, element: <MainPage /> },
                     { path: UrlConfig.error.url, element: <ErrorPage /> },

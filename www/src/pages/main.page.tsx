@@ -1,4 +1,3 @@
-import { EventCard } from '@/components/eventCard/EventCard'
 import { PageWrapper } from '@/components/page-wrapper'
 import { H1 } from '@/components/typography/h1'
 import { Button } from '@/components/ui/button'
@@ -15,7 +14,7 @@ export const MainPage: React.FC<MainPageProps> = memo(() => {
                 <H1>503 App</H1>
             </div>
             <Button asChild className="z-50">
-                <Link to={UrlConfig.app.url}>Go to app</Link>
+                <Link to={UrlConfig.main.url}>Go to app</Link>
             </Button>
         </PageWrapper>
     )

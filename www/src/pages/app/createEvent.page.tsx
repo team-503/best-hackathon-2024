@@ -13,11 +13,11 @@ import { format } from 'date-fns'
 import { Calendar } from '@/components/ui/calendar'
 import { CalendarIcon } from 'lucide-react'
 import { cn } from '@/utils/cn'
-import { EventStatusEnum, useUseCreateEventMutation } from '@/__generated__/graphql'
+import { EventStatusEnum, useCreateEventMutation } from '@/__generated__/graphql'
 
 type CreateEventPageProps = unknown
 export const CreateEventPage: React.FC<CreateEventPageProps> = memo(() => {
-    const [createEvent] = useUseCreateEventMutation()
+    const [createEvent] = useCreateEventMutation()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

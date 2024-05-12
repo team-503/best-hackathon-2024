@@ -1,3 +1,4 @@
+import { useGetAllEventsQuery, useGetUserQuery } from '@/__generated__/graphql'
 import { EventCard } from '@/components/eventCard/EventCard'
 import { PageWrapper } from '@/components/page-wrapper'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -20,22 +21,32 @@ export const HomePage: React.FC<HomePageProps> = memo(() => {
     const [statusFilter, setStatusFilter] = useState<'Uncompleted' | 'Сompleted' | 'All'>('All')
     const [directionFilter, setDirectionFilter] = useState<'All' | 'ABOBA' | 'ABOBA2'>('All')
     const [filteredCards, setFilteredCards] = useState(cards)
+    const { data } = useGetUserQuery()
+    const { data: allEvents } = useGetAllEventsQuery()
+    console.log('allEvents', allEvents)
+
+    console.log(data?.me.type)
     useEffect(() => {
-        const filtered = cards.filter(card => {
-            if (statusFilter === 'All' && directionFilter === 'All') {
-                return true
-            } else if (statusFilter === 'All' && directionFilter === card.direction) {
-                return true
-            } else if (directionFilter === 'All' && statusFilter === (card.status ? 'Сompleted' : 'Uncompleted')) {
-                return true
-            } else if (statusFilter === (card.status ? 'Сompleted' : 'Uncompleted') && directionFilter === card.direction) {
-                return true
-            } else {
-                return false
-            }
-        })
-        setFilteredCards(filtered)
-    }, [statusFilter, directionFilter])
+        if (data?.me.type === 'VOLUNTEER') {
+            const filtered = cards.filter(card => card.status === true)
+            setFilteredCards(filtered)
+        } else {
+            const filtered = cards.filter(card => {
+                if (statusFilter === 'All' && directionFilter === 'All') {
+                    return true
+                } else if (statusFilter === 'All' && directionFilter === card.direction) {
+                    return true
+                } else if (directionFilter === 'All' && statusFilter === (card.status ? 'Сompleted' : 'Uncompleted')) {
+                    return true
+                } else if (statusFilter === (card.status ? 'Сompleted' : 'Uncompleted') && directionFilter === card.direction) {
+                    return true
+                } else {
+                    return false
+                }
+            })
+            setFilteredCards(filtered)
+        }
+    }, [statusFilter, directionFilter, data?.me.type])
 
     useEffect(() => {
         console.log(directionFilter)
@@ -62,20 +73,22 @@ export const HomePage: React.FC<HomePageProps> = memo(() => {
                         <SelectItem value="ABOBA2">ABOBA2</SelectItem>
                     </SelectContent>
                 </Select>
-                <Select
-                    onValueChange={(value: 'Uncompleted' | 'Сompleted' | 'All') => {
-                        setStatusFilter(value)
-                    }}
-                >
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Статус" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="All">Всі</SelectItem>
-                        <SelectItem value="Uncompleted">Не завершена</SelectItem>
-                        <SelectItem value="Сompleted">Завершена</SelectItem>
-                    </SelectContent>
-                </Select>
+                {data?.me.type !== 'VOLUNTEER' && (
+                    <Select
+                        onValueChange={(value: 'Uncompleted' | 'Сompleted' | 'All') => {
+                            setStatusFilter(value)
+                        }}
+                    >
+                        <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Статус" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="All">Всі</SelectItem>
+                            <SelectItem value="Uncompleted">Не завершена</SelectItem>
+                            <SelectItem value="Сompleted">Завершена</SelectItem>
+                        </SelectContent>
+                    </Select>
+                )}
             </div>
             <div className="flex flex-wrap justify-center gap-4">
                 {filteredCards.map(item => (
