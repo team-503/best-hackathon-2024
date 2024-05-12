@@ -1,7 +1,7 @@
 import { Show } from '@/components/show-when'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { FormFieldProps } from '@/pages/auth/types/form-field-props.type'
+import { FormFieldProps } from '@/components/form/form-field-props.type'
 import { FieldPath, FieldValues } from 'react-hook-form'
 
 export const FormTextField = <

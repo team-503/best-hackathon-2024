@@ -1,18 +1,15 @@
+import { FormEmailField } from '@/components/form/form-email-field'
+import { FormPasswordField } from '@/components/form/form-password-field'
+import { FormSubmitButton } from '@/components/form/form-submit-button'
 import { PageWrapper } from '@/components/page-wrapper'
-import { Muted } from '@/components/typography/muted'
-import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form } from '@/components/ui/form'
 import { UrlConfig } from '@/config/url.config'
 import { AuthCard } from '@/pages/auth/components/auth-card'
-import { FormEmailField } from '@/pages/auth/components/form-email-field'
-import { FormPasswordField } from '@/pages/auth/components/form-password-field'
-import { FormSubmitButton } from '@/pages/auth/components/form-submit-button'
-import { OrContinueWithDivider } from '@/pages/auth/components/or-continue-with-divider'
 import { useLogin } from '@/pages/auth/hooks/use-login'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { memo, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -64,16 +61,7 @@ export const LoginPage: React.FC<LoginPageProps> = memo(() => {
                             </FormSubmitButton>
                         </form>
                     </Form>
-                    <OrContinueWithDivider className="my-5" />
                 </CardContent>
-                <CardFooter>
-                    <Muted>
-                        Немає акаунту?{' '}
-                        <Link to={UrlConfig.register.url} className="underline">
-                            Зареєструватись
-                        </Link>
-                    </Muted>
-                </CardFooter>
             </AuthCard>
         </PageWrapper>
     )
