@@ -1,6 +1,7 @@
 import { GqlAuthGuard } from '@/auth/guards/gql-auth.guard'
 import { CursorConnectionArgs } from '@/common/cursor-connection.args'
 import { IdArgs } from '@/common/id.args'
+import { EventConnectionArgs } from '@/endpoints/event/dto/event-connection.args'
 import { EventConnectionType } from '@/endpoints/event/dto/event-connection.type'
 import { EventInput, EventType, EventUpdateInput } from '@/endpoints/event/dto/event.type'
 import { EventService } from '@/endpoints/event/event.service'
@@ -13,7 +14,7 @@ export class EventResolver {
     constructor(private eventService: EventService) {}
 
     @Query(() => EventConnectionType)
-    eventConnection(@Args({ type: () => CursorConnectionArgs }) args: CursorConnectionArgs): Promise<EventConnectionType> {
+    eventConnection(@Args({ type: () => EventConnectionArgs }) args: EventConnectionArgs): Promise<EventConnectionType> {
         return this.eventService.eventConnection(args)
     }
 

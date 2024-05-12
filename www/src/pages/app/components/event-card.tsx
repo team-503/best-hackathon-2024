@@ -15,7 +15,7 @@ export const EventCard: React.FC<EventCardProps> = memo(({ to, event }) => {
         <Link to={to}>
             <Card className="duration-200 hover:bg-secondary">
                 <CardHeader>
-                    <CardTitle className="font-ukraineBold">Інформаційна картка</CardTitle>
+                    <CardTitle className="font-ukraineBold">{moment(event.date).format('L')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 font-ukraineThin">
                     <p>
@@ -36,8 +36,7 @@ export const EventCard: React.FC<EventCardProps> = memo(({ to, event }) => {
                         </Show>
                     </p>
                     <p>Напрям: {event.direction}</p>
-                    <p>Дата: {moment(event.date).format('L')}</p>
-                    <p>Зниклих безвісти: {event.disappearedQty}</p>
+                    <p>Зниклих безвісти: {event.status === EventStatusEnum.Undefined ? '?' : event.disappearedQty}</p>
                 </CardContent>
             </Card>
         </Link>

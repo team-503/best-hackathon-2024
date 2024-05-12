@@ -1,4 +1,4 @@
-import { EventConnectionDocument, EventStatusEnum, useCreateEventMutation } from '@/__generated__/graphql'
+import { DirectionEnum, EventConnectionDocument, EventStatusEnum, useCreateEventMutation } from '@/__generated__/graphql'
 import { FormSubmitButton } from '@/components/form/form-submit-button'
 import { FormTextField } from '@/components/form/form-text-field'
 import { PageWrapper } from '@/components/page-wrapper'
@@ -8,15 +8,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { QUERY_LIMIT } from '@/config/apollo.config'
 import { UrlConfig } from '@/config/url.config'
-import { DirectionEnum } from '@/pages/app/constants/direction.constants'
 import { cn } from '@/utils/cn'
+import { getDirectionString } from '@/utils/get-direction-string'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import { memo } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 const formSchema = z.object({
@@ -63,16 +65,20 @@ export const CreateEventPage: React.FC<CreateEventPageProps> = memo(() => {
             refetchQueries: [
                 {
                     query: EventConnectionDocument,
+                    variables: {
+                        limit: QUERY_LIMIT,
+                    },
                 },
             ],
         })
+        form.reset()
+        toast.success('Подію створено')
         navigate(UrlConfig.app.url)
     }
 
     return (
         <PageWrapper
             breadcrumbs={[UrlConfig.main, UrlConfig.app, UrlConfig.createEvent]}
-            container={false}
             className="my-auto flex items-center justify-center"
         >
             <Card className="max-w-[500px]">
@@ -97,7 +103,7 @@ export const CreateEventPage: React.FC<CreateEventPageProps> = memo(() => {
                                             <SelectContent>
                                                 {Object.values(DirectionEnum).map(direction => (
                                                     <SelectItem key={direction} value={direction}>
-                                                        {direction}
+                                                        {getDirectionString(direction)}
                                                     </SelectItem>
                                                 ))}
                                             </SelectContent>

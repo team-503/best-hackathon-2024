@@ -22,3 +22,5 @@ export const apolloClient = new ApolloClient({
     cache: new InMemoryCache(),
     connectToDevTools: NODE_ENV_DEV,
 })
+
+export const QUERY_LIMIT = 100

@@ -1,6 +1,6 @@
 import { EventStatusEnum } from '@/__generated__/graphql'
 
-export const getEventStatusTypeString = (status: EventStatusEnum): string | never => {
+export const getEventStatusTypeString = (status: EventStatusEnum): string => {
     switch (status) {
         case EventStatusEnum.Undefined:
             return 'Не визначено'
@@ -11,6 +11,7 @@ export const getEventStatusTypeString = (status: EventStatusEnum): string | neve
         case EventStatusEnum.Completed:
             return 'Завершено'
         default:
-            throw new Error('Unknown event status')
+            console.error(`Unknown event status: ${status}`)
+            return ''
     }
 }

@@ -4,6 +4,7 @@ import { AuthLayout } from '@/layouts/auth.layout'
 import { MainLayout } from '@/layouts/main.layout'
 import { AppPage } from '@/pages/app/app.page'
 import { CreateEventPage } from '@/pages/app/create-event.page'
+import { EventOsintPage } from '@/pages/app/event-osint.page'
 import { EventPage } from '@/pages/app/event.page'
 import { ErrorPage } from '@/pages/error.page'
 import { MainPage } from '@/pages/main.page'
@@ -11,7 +12,6 @@ import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { LoginPage } from './pages/auth/login.page'
-import { EventOsintPage } from '@/pages/app/event-osint.page'
 
 type RoutesProps = {
     location?: Parameters<typeof useRoutes>[1]
