@@ -1,5 +1,5 @@
 import { ArgsType, Field } from '@nestjs/graphql'
-import { IsInt, IsNotEmpty, IsString, Min } from 'class-validator'
+import { IsNotEmpty, IsString } from 'class-validator'
 
 @ArgsType()
 export class IdArgs {

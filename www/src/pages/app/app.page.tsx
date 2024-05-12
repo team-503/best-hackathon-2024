@@ -1,4 +1,4 @@
-import { DirectionEnum, EventStatusEnum, UserTypeEnum, useEventConnectionQuery, useMeQuery } from '@/__generated__/graphql'
+import { DirectionEnum, EventStatusEnum, UserTypeEnum, useEventConnectionQuery, useProfileQuery } from '@/__generated__/graphql'
 import { PageWrapper } from '@/components/page-wrapper'
 import { Show } from '@/components/show-when'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -16,7 +16,7 @@ type AppPageProps = unknown
 export const AppPage: React.FC<AppPageProps> = memo(() => {
     const [statusFilter, setStatusFilter] = useState<StatusFilterValues>('ALL')
     const [directionFilter, setDirectionFilter] = useState<DirectionFilterValues>('ALL')
-    const { data: me } = useMeQuery()
+    const { data: me } = useProfileQuery()
     const { data: events } = useEventConnectionQuery({
         variables: {
             limit: QUERY_LIMIT,
@@ -95,7 +95,17 @@ export const AppPage: React.FC<AppPageProps> = memo(() => {
                 </Show>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
-                {filteredEvents?.map(event => <EventCard key={event.id} event={event} />)}
+                {filteredEvents.map(event => (
+                    <EventCard
+                        key={event.id}
+                        event={event}
+                        to={
+                            me?.me.type === UserTypeEnum.Volunteer
+                                ? UrlConfig.eventOsintId.getDynamicUrl(event.id)
+                                : UrlConfig.eventId.getDynamicUrl(event.id)
+                        }
+                    />
+                ))}
             </div>
         </PageWrapper>
     )

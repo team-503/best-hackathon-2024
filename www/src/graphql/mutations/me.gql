@@ -1,4 +1,4 @@
-query Me {
+query Profile {
     me {
         email
         id

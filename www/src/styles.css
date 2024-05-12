@@ -5,6 +5,7 @@
 @layer base {
     * {
         @apply border-border;
+        transition: 0.2s
     }
     body {
         @apply bg-background text-foreground;

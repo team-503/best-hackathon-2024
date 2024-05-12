@@ -5,6 +5,7 @@ import { MainLayout } from '@/layouts/main.layout'
 import { AppPage } from '@/pages/app/app.page'
 import { CreateEventPage } from '@/pages/app/create-event.page'
 import { EventOsintPage } from '@/pages/app/event-osint.page'
+import { EventPage } from '@/pages/app/event.page'
 import { ErrorPage } from '@/pages/error.page'
 import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
@@ -26,6 +27,7 @@ export const Routes: React.FC<RoutesProps> = memo(({ location }) => {
                         element: <AuthLayout />,
                         children: [
                             { path: UrlConfig.app.url, element: <AppPage /> },
+                            { path: UrlConfig.eventId.url, element: <EventPage /> },
                             { path: UrlConfig.eventOsintId.url, element: <EventOsintPage /> },
                             { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
                         ],
