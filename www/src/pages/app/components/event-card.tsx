@@ -1,18 +1,18 @@
 import { EventStatusEnum, EventType } from '@/__generated__/graphql'
 import { Show } from '@/components/show-when'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { UrlConfig } from '@/config/url.config'
 import { getEventStatusTypeString } from '@/utils/get-event-status-type-string'
 import moment from 'moment'
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
 type EventCardProps = {
+    to: string
     event: EventType
 }
-export const EventCard: React.FC<EventCardProps> = memo(({ event }) => {
+export const EventCard: React.FC<EventCardProps> = memo(({ to, event }) => {
     return (
-        <Link to={UrlConfig.eventId.getDynamicUrl(event.id)}>
+        <Link to={to}>
             <Card className="duration-200 hover:bg-secondary">
                 <CardHeader>
                     <CardTitle className="font-ukraineBold">Інформаційна картка</CardTitle>

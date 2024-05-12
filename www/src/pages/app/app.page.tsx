@@ -83,7 +83,16 @@ export const AppPage: React.FC<AppPageProps> = memo(() => {
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
                 {filteredCards.map(event => (
-                    <EventCard key={event.id} event={event} />
+                    <EventCard
+                        key={event.id}
+                        event={event}
+                        to={
+                            // me?.me.type === UserTypeEnum.Volunteer
+                            //     ? UrlConfig.eventOsintId.getDynamicUrl(event.id)
+                            //     : UrlConfig.eventId.getDynamicUrl(event.id)
+                            UrlConfig.eventOsintId.getDynamicUrl(event.id)
+                        }
+                    />
                 ))}
             </div>
         </PageWrapper>
