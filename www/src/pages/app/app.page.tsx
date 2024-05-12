@@ -87,10 +87,9 @@ export const AppPage: React.FC<AppPageProps> = memo(() => {
                         key={event.id}
                         event={event}
                         to={
-                            // me?.me.type === UserTypeEnum.Volunteer
-                            //     ? UrlConfig.eventOsintId.getDynamicUrl(event.id)
-                            //     : UrlConfig.eventId.getDynamicUrl(event.id)
-                            UrlConfig.eventOsintId.getDynamicUrl(event.id)
+                            me?.me.type === UserTypeEnum.Volunteer
+                                ? UrlConfig.eventOsintId.getDynamicUrl(event.id)
+                                : UrlConfig.eventId.getDynamicUrl(event.id)
                         }
                     />
                 ))}
