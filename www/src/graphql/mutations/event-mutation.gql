@@ -1,0 +1,18 @@
+mutation CreateEvent($event: EventInput!) {
+    createEvent(event: $event) {
+        status
+        latitude
+        longitude
+        direction
+        date
+        id
+        persons {
+            surname
+            name
+            secondName
+            imageUrl
+        }
+        disappearedQty
+        createdAt
+    }
+}
