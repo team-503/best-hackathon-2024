@@ -2,14 +2,15 @@ import { UrlConfig } from '@/config/url.config'
 import { AlreadyAuthLayout } from '@/layouts/already-auth.layout'
 import { AuthLayout } from '@/layouts/auth.layout'
 import { MainLayout } from '@/layouts/main.layout'
+import { AppPage } from '@/pages/app/app.page'
 import { CreateEventPage } from '@/pages/app/create-event.page'
+import { EventOsintPage } from '@/pages/app/event-osint.page'
 import { ErrorPage } from '@/pages/error.page'
 import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { LoginPage } from './pages/auth/login.page'
-import { AppPage } from '@/pages/app/app.page'
 
 type RoutesProps = {
     location?: Parameters<typeof useRoutes>[1]
@@ -25,6 +26,7 @@ export const Routes: React.FC<RoutesProps> = memo(({ location }) => {
                         element: <AuthLayout />,
                         children: [
                             { path: UrlConfig.app.url, element: <AppPage /> },
+                            { path: UrlConfig.eventOsintId.url, element: <EventOsintPage /> },
                             { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
                         ],
                     },

@@ -4,6 +4,7 @@ import { CurrentThemeIcon } from '@/modules/theme/components/current-theme-icon'
 import { ThemeIcons } from '@/modules/theme/components/theme-icons'
 import { Theme, useThemeStore } from '@/modules/theme/stores/theme.store'
 import { cn } from '@/utils/cn'
+import { getThemeTypeString } from '@/utils/get-theme-string'
 import { memo, useCallback } from 'react'
 
 type ThemeSelectorProps = React.ComponentProps<typeof Button> & {
@@ -39,7 +40,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = memo(({ align, childr
                             theme === currentTheme && 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
                         )}
                     >
-                        {theme}
+                        {getThemeTypeString(theme)}
                     </DropdownMenuItem>
                 ))}
             </DropdownMenuContent>

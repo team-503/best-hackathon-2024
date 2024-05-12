@@ -1,5 +1,5 @@
-query EventConnection {
-    eventConnection {
+query EventConnection($limit: Int!, $nextPageCursor: Int, $eventStatus: EventStatusEnum, $direction: DirectionEnum) {
+    eventConnection(limit: $limit, nextPageCursor: $nextPageCursor, eventStatus: $eventStatus, direction: $direction) {
         nodes {
             status
             latitude
