@@ -4,7 +4,7 @@ import { IsInt, IsNumber, IsOptional, Min } from 'class-validator'
 
 @ArgsType()
 export class CursorConnectionArgs {
-    @Field(() => Int, { defaultValue: DEFAULT_LIMIT })
+    @Field(() => Int, { nullable: true, defaultValue: DEFAULT_LIMIT })
     @IsOptional()
     @IsInt()
     @Min(1)

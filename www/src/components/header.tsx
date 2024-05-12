@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = memo(() => {
                                 </Button>
                             </Show.When>
                         </Show>
-                        <ThemeSelector variant="outline" />
+                        <ThemeSelector variant="outline" align="end" />
                     </div>
                 </div>
             </div>

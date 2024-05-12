@@ -63,8 +63,16 @@ input PersonInput {
 
 type Query {
   me: UserType!
-  eventConnection(limit: Int! = 10, nextPageCursor: Int): EventConnectionType!
+  eventConnection(limit: Int = 10, nextPageCursor: Int, eventStatus: EventStatusEnum, direction: DirectionEnum): EventConnectionType!
   event(id: String!): EventType!
+}
+
+enum DirectionEnum {
+  BAKHMUT
+  KUPIANSK
+  AVDIIVKA
+  KHERSON
+  MARIINKA
 }
 
 type Mutation {
