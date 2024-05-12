@@ -1,4 +1,4 @@
-import { EventStatusEnum, UserTypeEnum, useEventConnectionQuery, useMeQuery } from '@/__generated__/graphql'
+import { EventStatusEnum, UserTypeEnum, useEventConnectionQuery, useProfileQuery } from '@/__generated__/graphql'
 import { PageWrapper } from '@/components/page-wrapper'
 import { Show } from '@/components/show-when'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -15,7 +15,7 @@ type AppPageProps = unknown
 export const AppPage: React.FC<AppPageProps> = memo(() => {
     const [statusFilter, setStatusFilter] = useState<StatusFilterValues>('ALL')
     const [directionFilter, setDirectionFilter] = useState<DirectionFilterValues>('All')
-    const { data: me } = useMeQuery()
+    const { data: me } = useProfileQuery()
     const { data: events } = useEventConnectionQuery()
 
     const filteredCards = useMemo(() => {

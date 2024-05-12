@@ -1,21 +1,21 @@
-import { useEventByIdQuery } from '@/__generated__/graphql'
+import { PersonType, useEventByIdQuery } from '@/__generated__/graphql'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { NotFoundPage } from '@/pages/not-found.page'
 import moment from 'moment'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { DialogDemo } from './addLostPeopleModalForm'
 
-type EventPageProps = unknown
-export const EventPage: React.FC<EventPageProps> = () => {
+export const EventPage = () => {
     const { id } = useParams<{ id: string }>()
+    const [lostPeople, setLostPeople] = useState<PersonType[]>([])
+
     const { data } = useEventByIdQuery({
         variables: {
-            eventId: id || '',
+            eventId: id || '-1',
         },
     })
-    if (!data?.event) {
-        return <NotFoundPage />
-    }
 
+    console.log('lostPeople', lostPeople)
     return (
         <div className="flex flex-col items-center justify-center">
             <h1 className="mt-6 text-center text-3xl ">Інформаційна карточка, деталі</h1>
@@ -37,6 +37,8 @@ export const EventPage: React.FC<EventPageProps> = () => {
                         <p>Дата: {moment(data?.event.date).format('L')}</p>
                         <p>Кількість пропавших безвісті: {data?.event.disappearedQty}</p>
                         <p>Напрям: {data?.event.direction}</p>
+
+                        <DialogDemo setLostPeople={setLostPeople} />
                     </div>
                 </CardContent>
             </Card>

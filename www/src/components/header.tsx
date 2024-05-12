@@ -1,4 +1,4 @@
-import { UserTypeEnum, useMeQuery } from '@/__generated__/graphql'
+import { UserTypeEnum, useProfileQuery } from '@/__generated__/graphql'
 import { Show } from '@/components/show-when'
 import { H3 } from '@/components/typography/h3'
 import { Button } from '@/components/ui/button'
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 type HeaderProps = unknown
 export const Header: React.FC<HeaderProps> = memo(() => {
     const isAuth = useIsAuthenticated()
-    const { data } = useMeQuery()
+    const { data } = useProfileQuery()
 
     return (
         <header className="sticky top-0 z-50 flex h-[80px] justify-center border-b bg-background/95 backdrop-blur">
