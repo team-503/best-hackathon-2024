@@ -10,6 +10,7 @@ import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { LoginPage } from './pages/auth/login.page'
+import { CardPage } from './pages/app/card-page'
 
 type RoutesProps = {
     location?: Parameters<typeof useRoutes>[1]
@@ -25,6 +26,7 @@ export const Routes: React.FC<RoutesProps> = memo(({ location }) => {
                         element: <AuthLayout />,
                         children: [
                             { path: UrlConfig.main.url, element: <HomePage /> },
+                            { path: UrlConfig.details.url, element: <CardPage /> },
                             { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
                         ],
                     },

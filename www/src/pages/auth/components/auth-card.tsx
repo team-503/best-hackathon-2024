@@ -1,9 +1,13 @@
 import { Card } from '@/components/ui/card'
-import { ChildrenProps } from '@/utils/types/type-helpers'
+import { cn } from '@/utils/cn'
 import { memo } from 'react'
 
-type AuthCardProps = ChildrenProps
-export const AuthCard: React.FC<AuthCardProps> = memo(({ children }) => {
-    return <Card className="w-[450px]">{children}</Card>
+type AuthCardProps = React.ComponentProps<typeof Card>
+export const AuthCard: React.FC<AuthCardProps> = memo(({ className, children, ...props }) => {
+    return (
+        <Card className={cn('w-[450px]', className)} {...props}>
+            {children}
+        </Card>
+    )
 })
 AuthCard.displayName = 'AuthCard'

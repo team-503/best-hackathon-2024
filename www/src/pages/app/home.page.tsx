@@ -4,6 +4,8 @@ import { PageWrapper } from '@/components/page-wrapper'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { UrlConfig } from '@/config/url.config'
 import { memo, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
 type HomePageProps = unknown
 const cards = [
     { id: 1, status: true, direction: 'ABOBA', location: 'ABOBA', checkOutTime: 'ABOBA', date: '01/10/2024' },
@@ -92,14 +94,16 @@ export const HomePage: React.FC<HomePageProps> = memo(() => {
             </div>
             <div className="flex flex-wrap justify-center gap-4">
                 {filteredCards.map(item => (
-                    <EventCard
-                        key={item.id}
-                        status={item.status}
-                        direction={item.direction}
-                        location={item.location}
-                        date={item.date}
-                        checkOutTime={item.checkOutTime}
-                    />
+                    <Link to={`/details/${item.id}`}>
+                        <EventCard
+                            key={item.id}
+                            status={item.status}
+                            direction={item.direction}
+                            location={item.location}
+                            date={item.date}
+                            checkOutTime={item.checkOutTime}
+                        />
+                    </Link>
                 ))}
             </div>
         </PageWrapper>

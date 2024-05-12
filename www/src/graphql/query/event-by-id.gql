@@ -1,0 +1,18 @@
+query EventById($eventId: String!) {
+    event(id: $eventId) {
+        status
+        latitude
+        longitude
+        direction
+        date
+        id
+        persons {
+            surname
+            name
+            secondName
+            imageUrl
+        }
+        disappearedQty
+        createdAt
+    }
+}

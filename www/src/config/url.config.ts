@@ -26,11 +26,7 @@ export class UrlConfig {
     }
     public static login = {
         label: 'Login',
-        url: `${UrlConfig.authPrefix}/login`,
-        register: {
-            label: 'Реєстрація',
-            url: `${UrlConfig.authPrefix}/register`,
-        },
+        url: `${UrlConfig.authPrefix}/login`
     }
     public static register = {
         label: 'Register',
@@ -43,6 +39,10 @@ export class UrlConfig {
     public static app = {
         label: 'App',
         url: UrlConfig.appPrefix,
+    }
+    public static details = {
+        label: 'Details',
+        url: "/details/:id"
     }
 }
 
