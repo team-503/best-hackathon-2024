@@ -1,15 +1,10 @@
 export class UrlConfig {
     private static authPrefix = '/auth'
     private static appPrefix = '/app'
-    private static createEventPrefix = '/create-event'
 
-    public static home = {
-        label: 'Home',
-        url: '/',
-    }
     public static main = {
         label: 'Home',
-        url: '/home',
+        url: '/',
     }
     public static notFound = {
         label: '404',
@@ -26,23 +21,21 @@ export class UrlConfig {
     }
     public static login = {
         label: 'Login',
-        url: `${UrlConfig.authPrefix}/login`
+        url: `${UrlConfig.authPrefix}/login`,
     }
-    public static register = {
-        label: 'Register',
-        url: `${UrlConfig.authPrefix}/register`,
-    }
-    public static createEvent = {
-        label: 'Create event',
-        url: UrlConfig.createEventPrefix,
-    }
+
     public static app = {
         label: 'App',
         url: UrlConfig.appPrefix,
     }
-    public static details = {
-        label: 'Details',
-        url: "/details/:id"
+    public static eventId = {
+        label: 'Event',
+        url: `${UrlConfig.appPrefix}/event/:eventId`,
+        getDynamicUrl: (eventId: string) => `${UrlConfig.appPrefix}/event/${eventId}`,
+    }
+    public static createEvent = {
+        label: 'Create event',
+        url: `${UrlConfig.appPrefix}/create-event`,
     }
 }
 

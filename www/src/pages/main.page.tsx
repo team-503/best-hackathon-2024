@@ -14,7 +14,7 @@ export const MainPage: React.FC<MainPageProps> = memo(() => {
                 <H1>503 App</H1>
             </div>
             <Button asChild className="z-50">
-                <Link to={UrlConfig.main.url}>Go to app</Link>
+                <Link to={UrlConfig.app.url}>Go to app</Link>
             </Button>
         </PageWrapper>
     )

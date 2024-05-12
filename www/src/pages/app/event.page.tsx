@@ -1,19 +1,19 @@
 import { useEventByIdQuery } from '@/__generated__/graphql'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { NotFoundPage } from '@/pages/not-found.page'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
-import { NotFoundPage } from '../not-found.page'
 
-type CardPageProps = unknown
-export const CardPage: React.FC<CardPageProps> = () => {
+type EventPageProps = unknown
+export const EventPage: React.FC<EventPageProps> = () => {
     const { id } = useParams<{ id: string }>()
     const { data } = useEventByIdQuery({
         variables: {
-            eventId: id,
+            eventId: id || '',
         },
     })
     if (!data?.event) {
-        // return <NotFoundPage />
+        return <NotFoundPage />
     }
 
     return (
