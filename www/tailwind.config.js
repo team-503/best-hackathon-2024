@@ -12,6 +12,11 @@ module.exports = {
             },
         },
         extend: {
+            fontFamily: {
+                ukraineRegular: ['e-Ukraine-Regular', 'sans-serif'],
+                ukraineBold: ['e-Ukraine-Bold', 'sans-serif'],
+                ukraineThin: ['e-Ukraine-Thin', 'sans-serif'],
+            },
             colors: {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',

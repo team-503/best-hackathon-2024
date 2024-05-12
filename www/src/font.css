@@ -1,5 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@font-face {
+    font-family: 'e-Ukraine-Regular';
+    src: url('./assets/fonts/e-Ukraine-Regular.otf');
+  }
+  
 
+@font-face {
+    font-family: 'e-Ukraine-Bold';
+    src: url('./assets/fonts/e-Ukraine-Bold.otf');
+  }
+  
+  
+@font-face {
+    font-family: 'e-Ukraine-Thin';
+    src: url('./assets/fonts/e-Ukraine-Thin.otf');
+  }
+  
 * {
-    font-family: 'Inter' !important;
+    font-family: 'e-Ukraine-Regular';
 }
