@@ -1,117 +1,141 @@
 import { PageWrapper } from '@/components/page-wrapper'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Form } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { UrlConfig } from '@/config/url.config'
-import { ChangeEvent, memo, useEffect, useState } from 'react'
+import { formSchema } from '@/utils/scheme/scheme'
+import { memo } from 'react'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { format } from 'date-fns'
+import { Calendar } from '@/components/ui/calendar'
+import { CalendarIcon } from 'lucide-react'
+import { cn } from '@/utils/cn'
+import { EventStatusEnum, useUseCreateEventMutation } from '@/__generated__/graphql'
 
 type CreateEventPageProps = unknown
 export const CreateEventPage: React.FC<CreateEventPageProps> = memo(() => {
-    const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
-    const [direction, setDirection] = useState<'Авдіївський' | "Куп'янський" | 'Херсонський' | 'Бахмутський' | "Мар'їнський">()
-    const [name, setName] = useState<string>('')
-    const [date, setDate] = useState<Date>()
-    const [hour, setHour] = useState<number>()
-    const [number, setNumber] = useState<number>()
-    // const formSchema = z.object({
-    //     username: z.string().min(2, {
-    //       message: "Username must be at least 2 characters.",
-    //     }),
-    //   })
-    useEffect(() => {
-        console.log()
-    }, [date])
+    const [createEvent] = useUseCreateEventMutation()
+
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            status: EventStatusEnum.Undefined,
+            latitude: '',
+            longitude: '',
+            direction: '',
+        },
+    })
+
+    const { handleSubmit } = form
+
+    const onSubmit = (values: z.infer<typeof formSchema>) => {
+        createEvent({
+            variables: {
+                event: {
+                    ...values,
+                    date: values.date.toISOString(),
+                    persons: [],
+                    latitude: Number(values.latitude),
+                    longitude: Number(values.longitude),
+                },
+            },
+        })
+    }
+
     return (
         <PageWrapper
             breadcrumbs={[UrlConfig.home, UrlConfig.app, { ...UrlConfig.app, label: 'All photos' }]}
             container={false}
             className="space-y-3"
         >
-            <div className="flex h-full w-full items-center justify-center">
-                <Card className="w-[350px]">
-                    <CardHeader>
-                        <CardTitle>Створіть нову інформаційну картку</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        {/* <Form {...form} > */}
-                            <form>
-                                <div className="grid w-full items-center gap-4">
-                                    <div className="flex flex-col space-y-1.5">
-                                        <Label htmlFor="framework">Напрям</Label>
-                                        <Select>
-                                            <SelectTrigger id="framework">
-                                                <SelectValue placeholder="Обиріть напрям" />
-                                            </SelectTrigger>
-                                            <SelectContent position="popper">
-                                                <SelectItem value="Авдіївський">Авдіївський</SelectItem>
-                                                <SelectItem value="Куп'янський">Куп'янський</SelectItem>
-                                                <SelectItem value="Херсонський">Херсонський</SelectItem>
-                                                <SelectItem value="Бахмутський">Бахмутський</SelectItem>
-                                                <SelectItem value="Мар'їнський">Мар'їнський</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                    <div className="flex flex-col space-y-1.5">
-                                        <Label htmlFor="name">Населений пункт</Label>
-                                        <Input
-                                            id="name"
-                                            autoComplete="off"
-                                            value={name}
-                                            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                                setName(event.target.value)
-                                            }}
-                                            placeholder="Назва населеного пункту"
-                                        />
-                                    </div>
-                                    <div className="flex flex-col space-y-1.5">
-                                        <Label htmlFor="date">Дата</Label>
-                                        <Input
-                                            id="date"
-                                            value={date}
-                                            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                                setDate(event.target.value)
-                                            }}
-                                            autoComplete="off"
-                                            placeholder="День бойової операції"
-                                        />
-                                    </div>
-                                    <div className="flex flex-col space-y-1.5">
-                                        <Label htmlFor="hour">Година виїзду</Label>
-                                        <Input
-                                            id="hour"
-                                            autoComplete="off"
-                                            value={hour}
-                                            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                                setHour(Number(event.target.value))
-                                            }}
-                                            placeholder="Година виїзду"
-                                        />
-                                    </div>
-                                    <div className="flex flex-col space-y-1.5">
-                                        <Label htmlFor="number">Чисельний склад військової групи</Label>
-                                        <Input
-                                            id="number"
-                                            value={number}
-                                            type="number"
-                                            onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                                setNumber(Number(event.target.value))
-                                            }}
-                                            autoComplete="off"
-                                            placeholder="К-сть військового складу"
-                                        />
-                                    </div>
-                                </div>
-                            </form>
-                        {/* </Form> */}
-                    </CardContent>
-                    <CardFooter className="flex justify-between">
-                        <Button className="w-full">Створити</Button>
-                    </CardFooter>
-                </Card>
+            <div className="container max-w-[560px]">
+                <Form {...form}>
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                        <FormField
+                            control={form.control}
+                            name="direction"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Напрям</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Напрям" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="date"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-col">
+                                    <FormLabel>Дата</FormLabel>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <FormControl>
+                                                <Button
+                                                    variant={'outline'}
+                                                    className={cn(
+                                                        'pl-3 text-left font-normal',
+                                                        !field.value && 'text-muted-foreground',
+                                                    )}
+                                                >
+                                                    {field.value ? format(field.value, 'PPP') : <span>Виберіть дату</span>}
+                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                </Button>
+                                            </FormControl>
+                                        </PopoverTrigger>
+                                        <PopoverContent className="w-auto p-0" align="start">
+                                            <Calendar
+                                                mode="single"
+                                                selected={field.value}
+                                                onSelect={field.onChange}
+                                                disabled={date => date > new Date() || date < new Date('1900-01-01')}
+                                                initialFocus
+                                            />
+                                        </PopoverContent>
+                                    </Popover>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <div className="flex justify-between">
+                            <FormField
+                                control={form.control}
+                                name="longitude"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Широта</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Широта" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="latitude"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Довгота</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Довгота" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+
+                        <Button type="submit">Створити</Button>
+                    </form>
+                </Form>
             </div>
         </PageWrapper>
     )

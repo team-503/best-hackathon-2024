@@ -9,7 +9,7 @@ import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
-import { LoginPage } from './pages/auth/login-page/login.page'
+import { LoginPage } from './pages/auth/login.page'
 
 type RoutesProps = {
     location?: Parameters<typeof useRoutes>[1]
