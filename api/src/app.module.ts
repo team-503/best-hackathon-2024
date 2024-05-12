@@ -1,4 +1,5 @@
-import { GraphQLEndpointsModule } from '@/endpoints/endpoints.module'
+import { AuthModule } from '@/auth/auth.module'
+import { GraphQLEndpointsModule } from '@/endpoints/graphql-endpoints.module'
 import { ENV } from '@/utils/env'
 import {
     ApolloServerPluginLandingPageLocalDefault,
@@ -18,13 +19,10 @@ import { join } from 'path'
             sortSchema: false,
             playground: false,
             introspection: true,
-            plugins: [
-                ENV.isProd()
-                    ? ApolloServerPluginLandingPageProductionDefault({ footer: false })
-                    : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
-            ],
+            plugins: [ApolloServerPluginLandingPageLocalDefault({ footer: false })],
             includeStacktraceInErrorResponses: !ENV.isProd(),
         }),
+        AuthModule,
         GraphQLEndpointsModule,
     ],
 })

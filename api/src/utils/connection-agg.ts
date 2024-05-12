@@ -6,11 +6,7 @@ type TConnectionType<T> = {
     }
 }
 
-const getNextPageCursorFromNodes = <TNodes extends { id: number }>(nodes: TNodes[]): number | null => {
-    return nodes.length === 0 ? null : nodes.at(-1)?.id ?? null
-}
-
-export const connectionAgg = <TNodes extends { id: number }, TArgs extends { limit: number }>(
+export const connectionAgg = <TNodes, TArgs extends { limit: number; nextPageCursor: number }>(
     nodes: TNodes[],
     args: TArgs,
 ): TConnectionType<TNodes> => {
@@ -18,7 +14,7 @@ export const connectionAgg = <TNodes extends { id: number }, TArgs extends { lim
         nodes,
         pageInfo: {
             limit: args.limit,
-            nextPageCursor: getNextPageCursorFromNodes(nodes),
+            nextPageCursor: args.nextPageCursor,
         },
     }
 }
