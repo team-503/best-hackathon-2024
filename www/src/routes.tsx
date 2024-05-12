@@ -3,6 +3,7 @@ import { AlreadyAuthLayout } from '@/layouts/already-auth.layout'
 import { AuthLayout } from '@/layouts/auth.layout'
 import { MainLayout } from '@/layouts/main.layout'
 import { CreateEventPage } from '@/pages/app/createEvent.page'
+import { HomePage } from '@/pages/app/home.page'
 import { ErrorPage } from '@/pages/error.page'
 import { MainPage } from '@/pages/main.page'
 import { NotFoundPage } from '@/pages/not-found.page'
@@ -21,15 +22,20 @@ export const Routes: React.FC<RoutesProps> = memo(({ location }) => {
                 children: [
                     {
                         element: <AuthLayout />,
-                        children: [],
+                        children: [
+                            { path: UrlConfig.main.url, element: <HomePage /> },
+                            { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
+                        ],
                     },
                     {
                         path: UrlConfig.auth.url,
                         element: <AlreadyAuthLayout />,
-                        children: [],
+                        children: [
+                            // { path: UrlConfig.main.url, element: <HomePage /> },
+                            // { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
+                        ],
                     },
                     { path: UrlConfig.home.url, element: <MainPage /> },
-                    { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
                     { path: UrlConfig.error.url, element: <ErrorPage /> },
                     { path: '*', element: <NotFoundPage /> },
                 ],

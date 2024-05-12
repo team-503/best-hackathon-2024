@@ -7,7 +7,10 @@ export class UrlConfig {
         label: 'Home',
         url: '/',
     }
-
+    public static main = {
+        label: 'Home',
+        url: '/home',
+    }
     public static notFound = {
         label: '404',
         url: '/not-found',

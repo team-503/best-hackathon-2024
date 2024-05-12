@@ -1,6 +1,6 @@
-import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import moment from 'moment'
+import React from 'react'
 
 interface IEventCardProps {
     status: boolean
@@ -14,7 +14,7 @@ interface IEventCardProps {
 
 export const EventCard: React.FC<IEventCardProps> = ({ status, direction, location, date, checkOutTime, lostPeople }) => {
     return (
-        <Card className="w-[350px] cursor-pointer transition-colors hover:bg-secondary">
+        <Card className="w-[49%] min-w-[350px] cursor-pointer transition-colors hover:bg-secondary">
             <CardHeader>
                 <CardTitle className="font-ukraineBold">Інформаційна картка</CardTitle>
             </CardHeader>

@@ -13,7 +13,7 @@ type PageWrapperProps = React.ComponentProps<'div'> & {
 export const PageWrapper: React.FC<PageWrapperProps> = memo(({ breadcrumbs, container = true, className, ...props }) => {
     return (
         // <TransitionWrapper>
-        <main className="flex flex-1 flex-col">
+        <main className="flex flex-1 flex-col px-8">
             <Show>
                 <Show.When isTrue={breadcrumbs != null}>
                     <Breadcrumb className={cn('py-5', container && 'container')}>
