@@ -8,7 +8,7 @@ export const AlreadyAuthLayout: React.FC<AlreadyAuthLayoutProps> = memo(() => {
     const isAuth = useIsAuthenticated()
 
     if (isAuth) {
-        return <Navigate to={UrlConfig.app.url} />
+        return <Navigate to={UrlConfig.main.url} />
     }
 
     return <Outlet />

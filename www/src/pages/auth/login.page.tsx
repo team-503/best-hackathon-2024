@@ -33,7 +33,7 @@ export const LoginPage: React.FC<LoginPageProps> = memo(() => {
     const onSubmit = useCallback(
         async (values: FormSchemaType) => {
             try {
-                login(UrlConfig.app.url, {
+                login(UrlConfig.main.url, {
                     email: values.email,
                     password: values.password,
                 })
