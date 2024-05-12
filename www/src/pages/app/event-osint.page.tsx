@@ -53,15 +53,7 @@ export const EventOsintPage: React.FC<EventOsintPageProps> = memo(() => {
                     <Separator />
                     <div className="py-2" />
 
-                    {/* {data?.event.persons.map(person => <PersonCard person={person} />)} */}
-                    <PersonCard
-                        person={{
-                            imageUrl: 'https://via.placeholder.com/150',
-                            name: 'Іван',
-                            surname: 'Іванов',
-                            secondName: 'Іванович',
-                        }}
-                    ></PersonCard>
+                    {data?.event.persons.map(person => <PersonCard person={person} />)}
                 </CardContent>
             </Card>
         </PageWrapper>
