@@ -11,6 +11,7 @@ import { NotFoundPage } from '@/pages/not-found.page'
 import { memo } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { LoginPage } from './pages/auth/login.page'
+import { EventOsintPage } from '@/pages/app/event-osint.page'
 
 type RoutesProps = {
     location?: Parameters<typeof useRoutes>[1]
@@ -27,6 +28,7 @@ export const Routes: React.FC<RoutesProps> = memo(({ location }) => {
                         children: [
                             { path: UrlConfig.app.url, element: <AppPage /> },
                             { path: UrlConfig.eventId.url, element: <EventPage /> },
+                            { path: UrlConfig.eventOsintId.url, element: <EventOsintPage /> },
                             { path: UrlConfig.createEvent.url, element: <CreateEventPage /> },
                         ],
                     },

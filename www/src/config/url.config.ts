@@ -3,7 +3,7 @@ export class UrlConfig {
     private static appPrefix = '/app'
 
     public static main = {
-        label: 'Home',
+        label: 'Головна',
         url: '/',
     }
     public static notFound = {
@@ -11,30 +11,35 @@ export class UrlConfig {
         url: '/not-found',
     }
     public static error = {
-        label: 'Error',
+        label: 'Помилка',
         url: '/error',
     }
 
     public static auth = {
-        label: 'Auth',
+        label: 'Авторизація',
         url: UrlConfig.authPrefix,
     }
     public static login = {
-        label: 'Login',
+        label: 'Логін',
         url: `${UrlConfig.authPrefix}/login`,
     }
 
     public static app = {
-        label: 'App',
+        label: 'Додаток',
         url: UrlConfig.appPrefix,
     }
     public static eventId = {
-        label: 'Event',
-        url: `${UrlConfig.appPrefix}/event/:eventId`,
+        label: 'Подія',
+        url: `${UrlConfig.appPrefix}/event/:id`,
         getDynamicUrl: (eventId: string) => `${UrlConfig.appPrefix}/event/${eventId}`,
     }
+    public static eventOsintId = {
+        label: 'Подія',
+        url: `${UrlConfig.appPrefix}/event-osint/:id`,
+        getDynamicUrl: (eventId: string) => `${UrlConfig.appPrefix}/event-osint/${eventId}`,
+    }
     public static createEvent = {
-        label: 'Create event',
+        label: 'Створити подію',
         url: `${UrlConfig.appPrefix}/create-event`,
     }
 }
