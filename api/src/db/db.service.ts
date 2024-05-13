@@ -42,7 +42,8 @@ export class DbService {
 
     private getCollectionName(collectionName: string): string {
         if (ENV.isDev()) {
-            return `${ENV.getNodeEnvShort()}__${collectionName}`
+            // return `${ENV.getNodeEnvShort()}__${collectionName}`
+            return collectionName
         }
         return collectionName
     }

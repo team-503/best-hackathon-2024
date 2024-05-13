@@ -24,10 +24,12 @@ export const AppPage: React.FC<AppPageProps> = memo(() => {
     })
 
     const filteredEvents = useMemo(() => {
-        if (me?.me.type === 'VOLUNTEER') {
+        if (me?.me.type === UserTypeEnum.Volunteer) {
             return (
-                events?.eventConnection.nodes.filter(event =>
-                    [EventStatusEnum.InProgress, EventStatusEnum.Completed].includes(event.status),
+                events?.eventConnection.nodes.filter(
+                    event =>
+                        event?.status &&
+                        [EventStatusEnum.Defined, EventStatusEnum.InProgress, EventStatusEnum.Completed].includes(event?.status),
                 ) || []
             )
         }
@@ -39,7 +41,7 @@ export const AppPage: React.FC<AppPageProps> = memo(() => {
                 if (directionFilter === 'ALL') {
                     return true
                 }
-                return event.status === statusFilter && event.direction.includes(directionFilter)
+                return event.status === statusFilter && event?.direction?.includes(directionFilter)
             }) || []
         )
     }, [directionFilter, events?.eventConnection.nodes, statusFilter, me?.me.type])

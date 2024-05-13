@@ -2,6 +2,7 @@ import { UserTypeEnum, useProfileQuery } from '@/__generated__/graphql'
 import { Show } from '@/components/show-when'
 import { H3 } from '@/components/typography/h3'
 import { Button } from '@/components/ui/button'
+import { UserMenuButton } from '@/components/user-menu-button'
 import { UrlConfig } from '@/config/url.config'
 import { ThemeSelector } from '@/modules/theme/components/theme-selector'
 import { memo } from 'react'
@@ -17,7 +18,7 @@ export const Header: React.FC<HeaderProps> = memo(() => {
         <header className="sticky top-0 z-50 flex h-[80px] justify-center border-b bg-background/95 backdrop-blur">
             <div className="container flex items-center justify-between">
                 <Link to={UrlConfig.main.url}>
-                    <H3 className="uppercase">Logo</H3>
+                    <H3 className="uppercase">Ми разом</H3>
                 </Link>
                 <div className="flex items-center gap-4">
                     <div className="flex items-center justify-end gap-3">
@@ -28,6 +29,7 @@ export const Header: React.FC<HeaderProps> = memo(() => {
                                 </Button>
                             </Show.When>
                         </Show>
+                        <UserMenuButton variant="outline" />
                         <ThemeSelector variant="outline" align="end" />
                     </div>
                 </div>

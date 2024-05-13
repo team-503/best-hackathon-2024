@@ -1,6 +1,6 @@
 import { EventStatusEnum } from '@/endpoints/event/dto/event-status.enum'
 import { PersonInput, PersonType } from '@/endpoints/event/dto/person.type'
-import { Field, Float, InputType, Int, ObjectType, OmitType } from '@nestjs/graphql'
+import { Field, Float, InputType, Int, ObjectType, OmitType, PartialType } from '@nestjs/graphql'
 import { IsArray, IsDateString, IsEnum, IsLatitude, IsLongitude, IsNotEmpty, IsObject, IsString } from 'class-validator'
 
 @InputType()
@@ -37,7 +37,7 @@ export class EventInput {
 
 @InputType()
 @ObjectType({ isAbstract: true })
-export class EventUpdateInput extends EventInput {
+export class EventUpdateInput extends PartialType(EventInput) {
     @Field(() => String)
     @IsString()
     @IsNotEmpty()

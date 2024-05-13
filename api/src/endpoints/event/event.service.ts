@@ -3,6 +3,7 @@ import { IdArgs } from '@/common/id.args'
 import { DbService } from '@/db/db.service'
 import { EventConnectionArgs } from '@/endpoints/event/dto/event-connection.args'
 import { EventConnectionType } from '@/endpoints/event/dto/event-connection.type'
+import { EventStatusEnum } from '@/endpoints/event/dto/event-status.enum'
 import { EventInput, EventType, EventUpdateInput } from '@/endpoints/event/dto/event.type'
 import { connectionAgg } from '@/utils/connection-agg'
 import { Injectable, NotFoundException } from '@nestjs/common'
@@ -55,8 +56,9 @@ export class EventService {
             throw new NotFoundException('Event not found')
         }
         await this.dbService.events.update({
-            disappearedQty: event.persons.length,
+            disappearedQty: event?.persons?.length ?? 0,
             ...event,
+            status: EventStatusEnum.DEFINED,
         })
         return {
             ...eventToUpdate,

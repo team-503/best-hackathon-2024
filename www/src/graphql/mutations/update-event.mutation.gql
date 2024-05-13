@@ -1,0 +1,18 @@
+mutation UpdateEvent($event: EventUpdateInput!) {
+    updateEvent(event: $event) {
+        status
+        latitude
+        longitude
+        direction
+        date
+        id
+        persons {
+            surname
+            name
+            secondName
+            imageUrl
+        }
+        disappearedQty
+        createdAt
+    }
+}

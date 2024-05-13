@@ -6,7 +6,6 @@ import { memo } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useLocation } from 'react-router-dom'
 import { Routes } from './routes'
-import { TailwindIndicator } from '@/components/tailwind-indicator'
 
 type AppProps = unknown
 export const App: React.FC<AppProps> = memo(() => {
@@ -19,7 +18,7 @@ export const App: React.FC<AppProps> = memo(() => {
             </AnimatePresence>
             <ThemeUpdater />
             <Toaster />
-            <TailwindIndicator />
+            {/* <TailwindIndicator /> */}
         </ErrorBoundary>
     )
 })

@@ -15,11 +15,11 @@ type PersonType {
 }
 
 type EventType {
-  status: EventStatusEnum!
-  latitude: Float!
-  longitude: Float!
-  direction: String!
-  date: String!
+  status: EventStatusEnum
+  latitude: Float
+  longitude: Float
+  direction: String
+  date: String
   id: String!
   persons: [PersonType!]!
   disappearedQty: Int!
@@ -103,11 +103,11 @@ input EventInput {
 }
 
 input EventUpdateInput {
-  status: EventStatusEnum!
-  latitude: Float!
-  longitude: Float!
-  direction: String!
-  date: String!
-  persons: [PersonInput!]! = []
+  status: EventStatusEnum
+  latitude: Float
+  longitude: Float
+  direction: String
+  date: String
+  persons: [PersonInput!] = []
   id: String!
 }
